@@ -1,11 +1,79 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Skills from "../components/Skills.astro";
+import Projects from "../components/Projects.astro";
+import Contact from "../components/Contact.astro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+	title='Zeiko - Full Stack Developer'
+	description='Full-stack developer specializing in React, Node.js, and modern web technologies. Building winning applications with a poker-inspired approach to development.'
+>
+	<Hero />
+	<About />
+	<Skills />
+	<Projects />
+	<Contact />
 </Layout>
+
+<script>
+	// Smooth scroll behavior for navigation
+	document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+		anchor.addEventListener("click", function (e: Event) {
+			e.preventDefault();
+			const target = document.querySelector(
+				(this as HTMLAnchorElement).getAttribute("href") || "",
+			);
+			if (target) {
+				target.scrollIntoView({
+					behavior: "smooth",
+					block: "start",
+				});
+			}
+		});
+	});
+
+	// Intersection Observer for animations
+	const observerOptions = {
+		root: null,
+		rootMargin: "0px",
+		threshold: 0.1,
+	};
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add("animate-fade-in");
+				observer.unobserve(entry.target);
+			}
+		});
+	}, observerOptions);
+
+	// Observe all sections
+	document.querySelectorAll("section").forEach((section) => {
+		observer.observe(section);
+	});
+</script>
+
+<style is:global>
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.animate-fade-in {
+		animation: fade-in 0.6s ease-out forwards;
+	}
+
+	section {
+		opacity: 0;
+	}
+</style>

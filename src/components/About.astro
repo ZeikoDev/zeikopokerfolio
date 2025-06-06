@@ -1,0 +1,114 @@
+---
+const skills = [
+    { name: "React", level: "Expert" },
+    { name: "TypeScript", level: "Expert" },
+    { name: "Node.js", level: "Advanced" },
+    { name: "Python", level: "Advanced" },
+    { name: "PostgreSQL", level: "Intermediate" },
+    { name: "Docker", level: "Intermediate" },
+    { name: "AWS", level: "Intermediate" },
+    { name: "GraphQL", level: "Advanced" },
+];
+---
+
+<section id='about' class='py-section relative'>
+    <div class='max-w-content mx-auto px-4'>
+        <div class='flex flex-col items-center gap-12'>
+            <!-- Right Column: Content (now centered) -->
+            <div class='space-y-8 w-full max-w-2xl'>
+                <h2 class='text-4xl font-bold text-electric-blue text-center'>
+                    About Me
+                </h2>
+                <p class='text-lg text-light-gray text-center'>
+                    I'm a passionate full-stack developer with a love for
+                    creating elegant solutions to complex problems. With years
+                    of experience in both frontend and backend development, I
+                    specialize in building scalable, performant web applications
+                    that deliver exceptional user experiences.
+                </p>
+                <p class='text-lg text-light-gray text-center'>
+                    When I'm not coding, you can find me at the poker table,
+                    where I've learned valuable lessons about strategy, risk
+                    management, and decision-making that I apply to my
+                    development work.
+                </p>
+
+                <!-- Skills Overview -->
+                <div class='space-y-4'>
+                    <h3
+                        class='text-2xl font-semibold text-electric-blue text-center'
+                    >
+                        Key Skills
+                    </h3>
+                    <div class='grid grid-cols-2 gap-4'>
+                        {
+                            skills.map((skill) => (
+                                <div class='bg-rich-blue rounded-lg p-4 backdrop-blur-sm border border-electric-blue/20'>
+                                    <h4 class='font-medium text-off-white'>
+                                        {skill.name}
+                                    </h4>
+                                    <p class='text-sm text-muted'>
+                                        {skill.level}
+                                    </p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+
+                <!-- Stat Poker Chips -->
+                <div class='flex gap-8 justify-center mt-12'>
+                    <!-- Years -->
+                    <div class='relative w-24 h-24 flex flex-col items-center'>
+                        <img
+                            src='/poker-chip-blue.svg'
+                            alt='Years Poker Chip'
+                            class='w-full h-full'
+                        />
+                        <span
+                            class='absolute inset-0 flex flex-col items-center justify-center text-white font-bold text-lg'
+                            >5+<br /><span class='text-xs font-normal'
+                                >Years</span
+                            ></span
+                        >
+                    </div>
+                    <!-- Projects -->
+                    <div class='relative w-24 h-24 flex flex-col items-center'>
+                        <img
+                            src='/poker-chip-blue.svg'
+                            alt='Projects Poker Chip'
+                            class='w-full h-full'
+                        />
+                        <span
+                            class='absolute inset-0 flex flex-col items-center justify-center text-white font-bold text-lg'
+                            >50+<br /><span class='text-xs font-normal'
+                                >Projects</span
+                            ></span
+                        >
+                    </div>
+                    <!-- Passion -->
+                    <div class='relative w-24 h-24 flex flex-col items-center'>
+                        <img
+                            src='/poker-chip-black.svg'
+                            alt='Passion Poker Chip'
+                            class='w-full h-full'
+                        />
+                        <span
+                            class='absolute inset-0 flex flex-col items-center justify-center text-white font-bold text-lg'
+                            >∞<br /><span class='text-xs font-normal'
+                                >Passion</span
+                            ></span
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .py-section {
+        padding-top: 120px;
+        padding-bottom: 120px;
+    }
+</style>

@@ -1,0 +1,168 @@
+<section
+    id='contact'
+    class='py-section bg-gradient-to-b from-blue-950 to-slate-950 relative overflow-hidden'
+>
+    <!-- Background Elements -->
+    <div class="absolute inset-0 bg-[url('/noise.png')] opacity-10"></div>
+
+    <div class='max-w-content mx-auto px-4 relative'>
+        <h2 class='text-4xl font-bold text-electric-blue text-center mb-16'>
+            Let's Make a Deal
+        </h2>
+
+        <div class='grid md:grid-cols-2 gap-12'>
+            <!-- Contact Form -->
+            <div class='space-y-8'>
+                <form class='space-y-6'>
+                    <div>
+                        <label
+                            for='name'
+                            class='block text-sm font-medium text-light-gray mb-2'
+                            >Your Name</label
+                        >
+                        <input
+                            type='text'
+                            id='name'
+                            name='name'
+                            class='w-full px-4 py-3 bg-rich-blue border border-electric-blue/20 rounded-lg text-off-white focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20 outline-none transition-colors'
+                            placeholder='John Doe'
+                        />
+                    </div>
+                    <div>
+                        <label
+                            for='email'
+                            class='block text-sm font-medium text-light-gray mb-2'
+                            >Email Address</label
+                        >
+                        <input
+                            type='email'
+                            id='email'
+                            name='email'
+                            class='w-full px-4 py-3 bg-rich-blue border border-electric-blue/20 rounded-lg text-off-white focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20 outline-none transition-colors'
+                            placeholder='john@example.com'
+                        />
+                    </div>
+                    <div>
+                        <label
+                            for='message'
+                            class='block text-sm font-medium text-light-gray mb-2'
+                            >Message</label
+                        >
+                        <textarea
+                            id='message'
+                            name='message'
+                            rows='4'
+                            class='w-full px-4 py-3 bg-rich-blue border border-electric-blue/20 rounded-lg text-off-white focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20 outline-none transition-colors resize-none'
+                            placeholder="Let's discuss your project..."
+                        ></textarea>
+                    </div>
+                    <button
+                        type='submit'
+                        class='w-full bg-electric-blue text-off-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 transition-colors flex items-center justify-center gap-2'
+                    >
+                        <span>All In</span>
+                        <img src='/poker-chip-black.svg' alt='' class='w-6 h-6' />
+                    </button>
+                </form>
+            </div>
+
+            <!-- Contact Information -->
+            <div class='space-y-8'>
+                <div
+                    class='bg-rich-blue rounded-2xl p-8 backdrop-blur-sm border border-electric-blue/20'
+                >
+                    <h3 class='text-2xl font-semibold text-electric-blue mb-6'>
+                        House Rules
+                    </h3>
+                    <ul class='space-y-4'>
+                        <li class='flex items-start gap-3'>
+                            <span class='text-electric-blue'>♠️</span>
+                            <p class='text-light-gray'>
+                                I'm available for full-time positions and
+                                contract work
+                            </p>
+                        </li>
+                        <li class='flex items-start gap-3'>
+                            <span class='text-electric-blue'>♥️</span>
+                            <p class='text-light-gray'>
+                                Remote work preferred, but open to hybrid
+                                arrangements
+                            </p>
+                        </li>
+                        <li class='flex items-start gap-3'>
+                            <span class='text-electric-blue'>♦️</span>
+                            <p class='text-light-gray'>
+                                Quick response time within 24 hours
+                            </p>
+                        </li>
+                        <li class='flex items-start gap-3'>
+                            <span class='text-electric-blue'>♣️</span>
+                            <p class='text-light-gray'>
+                                Open to discussing project requirements and
+                                timelines
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Social Links -->
+                <div class='space-y-6'>
+                    <h3 class='text-2xl font-semibold text-electric-blue'>
+                        Connect & Follow
+                    </h3>
+                    <div class='grid grid-cols-2 gap-4'>
+                        <a
+                            href='https://github.com/zeiko'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            class='bg-rich-blue rounded-lg p-4 backdrop-blur-sm border border-electric-blue/20 hover:border-electric-blue transition-colors flex items-center gap-3'
+                        >
+                            <img
+                                src='/github.svg'
+                                alt='GitHub'
+                                class='w-6 h-6'
+                            />
+                            <span class='text-off-white'>GitHub</span>
+                        </a>
+                        <a
+                            href='https://linkedin.com/in/zeiko'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            class='bg-rich-blue rounded-lg p-4 backdrop-blur-sm border border-electric-blue/20 hover:border-electric-blue transition-colors flex items-center gap-3'
+                        >
+                            <img
+                                src='/linkedin.svg'
+                                alt='LinkedIn'
+                                class='w-6 h-6'
+                            />
+                            <span class='text-off-white'>LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Email Contact -->
+                <div
+                    class='bg-rich-blue rounded-lg p-6 backdrop-blur-sm border border-electric-blue/20'
+                >
+                    <h4 class='text-xl font-semibold text-electric-blue mb-2'>
+                        Dealer Contact
+                    </h4>
+                    <a
+                        href='mailto:contact@zeiko.dev'
+                        class='text-light-gray hover:text-electric-blue transition-colors flex items-center gap-2'
+                    >
+                        <img src='/poker-chip-black.svg' alt='' class='w-5 h-5' />
+                        contact@zeiko.dev
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    input::placeholder,
+    textarea::placeholder {
+        color: #64748b;
+    }
+</style>

@@ -1,0 +1,110 @@
+---
+const projects = [
+  {
+    name: 'E-Commerce Platform',
+    hand: 'Royal Flush',
+    description: 'A full-featured e-commerce platform with real-time inventory and payment processing',
+    technologies: ['React', 'Node.js', 'PostgreSQL', 'Redis', 'AWS'],
+    impact: '10k+ users',
+    complexity: 'High',
+    image: '/projects/ecommerce.jpg',
+  },
+  {
+    name: 'Real-time Chat Application',
+    hand: 'Straight Flush',
+    description: 'WebSocket-based chat application with end-to-end encryption',
+    technologies: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
+    impact: '5k+ users',
+    complexity: 'Medium',
+    image: '/projects/chat.jpg',
+  },
+  {
+    name: 'Task Management System',
+    hand: 'Full House',
+    description: 'Project management tool with real-time collaboration features',
+    technologies: ['React', 'GraphQL', 'PostgreSQL', 'Docker'],
+    impact: '2k+ users',
+    complexity: 'Medium',
+    image: '/projects/tasks.jpg',
+  },
+];
+---
+
+<section id="projects" class="py-section relative">
+  <div class="max-w-content mx-auto px-4">
+    <h2 class="text-4xl font-bold text-electric-blue text-center mb-16">Winning Hands</h2>
+
+    <div class="space-y-24">
+      {projects.map((project, index) => (
+        <div class="group">
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <!-- Project Image -->
+            <div class="relative order-2 md:order-1">
+              <div class="aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-electric-blue to-cyan">
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  class="w-full h-full object-cover mix-blend-overlay"
+                />
+              </div>
+              <!-- Poker Hand Indicator -->
+              <div class="absolute -top-4 -left-4 bg-rich-blue rounded-lg px-4 py-2 border border-electric-blue">
+                <span class="text-electric-blue font-semibold">{project.hand}</span>
+              </div>
+            </div>
+
+            <!-- Project Details -->
+            <div class="space-y-6 order-1 md:order-2">
+              <h3 class="text-3xl font-bold text-off-white">{project.name}</h3>
+              <p class="text-lg text-light-gray">{project.description}</p>
+
+              <!-- Technologies -->
+              <div class="space-y-4">
+                <h4 class="text-xl font-semibold text-electric-blue">Tech Stack</h4>
+                <div class="flex flex-wrap gap-3">
+                  {project.technologies.map((tech) => (
+                    <span class="px-4 py-2 bg-rich-blue rounded-full text-sm text-off-white border border-electric-blue/20">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Impact & Complexity -->
+              <div class="grid grid-cols-2 gap-6">
+                <div class="bg-rich-blue rounded-lg p-4 backdrop-blur-sm border border-electric-blue/20">
+                  <h4 class="text-sm text-muted mb-1">Impact</h4>
+                  <p class="text-xl font-semibold text-electric-blue">{project.impact}</p>
+                </div>
+                <div class="bg-rich-blue rounded-lg p-4 backdrop-blur-sm border border-electric-blue/20">
+                  <h4 class="text-sm text-muted mb-1">Complexity</h4>
+                  <p class="text-xl font-semibold text-electric-blue">{project.complexity}</p>
+                </div>
+              </div>
+
+              <!-- View Project Button -->
+              <button class="group-hover:translate-x-2 transition-transform bg-electric-blue text-off-white px-8 py-3 rounded-lg font-semibold">
+                View Project
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Dealer's Choice Section -->
+    <div class="mt-24 text-center">
+      <h3 class="text-2xl font-semibold text-electric-blue mb-8">Dealer's Choice</h3>
+      <p class="text-lg text-light-gray max-w-2xl mx-auto">
+        These are just a few of my favorite projects. Each one represents a unique challenge 
+        and an opportunity to push the boundaries of what's possible in web development.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .group:hover .group-hover\:translate-x-2 {
+    transform: translateX(0.5rem);
+  }
+</style> 
