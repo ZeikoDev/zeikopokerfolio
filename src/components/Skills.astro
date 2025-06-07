@@ -1,118 +1,242 @@
 ---
-const skills = {
-  frontend: [
-    { name: 'React', suit: '♠️', level: 'Ace', description: 'Expert level React development with hooks and context' },
-    { name: 'Next.js', suit: '♠️', level: 'King', description: 'Server-side rendering and static site generation' },
-    { name: 'TypeScript', suit: '♠️', level: 'Queen', description: 'Strong typing and advanced type features' },
-    { name: 'Tailwind CSS', suit: '♠️', level: 'Jack', description: 'Utility-first CSS framework mastery' },
-  ],
-  backend: [
-    { name: 'Node.js', suit: '♥️', level: 'Ace', description: 'High-performance server applications' },
-    { name: 'Python', suit: '♥️', level: 'King', description: 'Data processing and API development' },
-    { name: 'GraphQL', suit: '♥️', level: 'Queen', description: 'Flexible API querying and schema design' },
-    { name: 'REST APIs', suit: '♥️', level: 'Jack', description: 'RESTful architecture and best practices' },
-  ],
-  database: [
-    { name: 'PostgreSQL', suit: '♦️', level: 'Ace', description: 'Complex queries and data modeling' },
-    { name: 'MongoDB', suit: '♦️', level: 'King', description: 'NoSQL database design and optimization' },
-    { name: 'Redis', suit: '♦️', level: 'Queen', description: 'Caching and real-time features' },
-  ],
-  tools: [
-    { name: 'Docker', suit: '♣️', level: 'Ace', description: 'Containerization and deployment' },
-    { name: 'AWS', suit: '♣️', level: 'King', description: 'Cloud infrastructure and services' },
-    { name: 'Git', suit: '♣️', level: 'Queen', description: 'Version control and collaboration' },
-    { name: 'CI/CD', suit: '♣️', level: 'Jack', description: 'Automated testing and deployment' },
-  ],
-};
+const skills = [
+  {
+    name: "React",
+    category: "Frontend",
+    icon: "/poker-chip-blue.svg",
+    description:
+      "Building interactive UIs and SPAs with hooks, context, and modern patterns.",
+  },
+  {
+    name: "TypeScript",
+    category: "Frontend",
+    icon: "/poker-chip-blue.svg",
+    description: "Type-safe, scalable codebases and advanced type features.",
+  },
+  {
+    name: "Node.js",
+    category: "Backend",
+    icon: "/poker-chip-black.svg",
+    description:
+      "APIs, real-time apps, and backend logic with Express and more.",
+  },
+  {
+    name: "PostgreSQL",
+    category: "Backend",
+    icon: "/poker-chip-black.svg",
+    description: "Relational data modeling, complex queries, and migrations.",
+  },
+  {
+    name: "Docker",
+    category: "Tools",
+    icon: "/poker-chip-blue.svg",
+    description: "Containerization, local dev, and deployment workflows.",
+  },
+  {
+    name: "AWS",
+    category: "Tools",
+    icon: "/poker-chip-black.svg",
+    description: "Cloud infrastructure, hosting, and scaling.",
+  },
+];
+
+const royalFlushSkills = [
+  {
+    value: "A",
+    skill: "React",
+    description: "Building interactive UIs and SPAs.",
+  },
+  {
+    value: "K",
+    skill: "TypeScript",
+    description: "Type-safe, scalable codebases.",
+  },
+  { value: "Q", skill: "Node.js", description: "APIs and backend logic." },
+  { value: "J", skill: "PostgreSQL", description: "Relational data modeling." },
+  {
+    value: "T",
+    skill: "Docker",
+    description: "Containerization and deployment.",
+  },
+];
+
+const otherSkills = [
+  {
+    name: "Next.js",
+    category: "Frontend",
+    description: "Server-side rendering and static site generation.",
+  },
+  {
+    name: "Tailwind CSS",
+    category: "Frontend",
+    description: "Utility-first CSS framework mastery.",
+  },
+  {
+    name: "Python",
+    category: "Backend",
+    description: "Data processing and API development.",
+  },
+  {
+    name: "GraphQL",
+    category: "Backend",
+    description: "Flexible API querying and schema design.",
+  },
+  {
+    name: "MongoDB",
+    category: "Database",
+    description: "NoSQL database design and optimization.",
+  },
+  {
+    name: "Redis",
+    category: "Database",
+    description: "Caching and real-time features.",
+  },
+  {
+    name: "AWS",
+    category: "Tools",
+    description: "Cloud infrastructure and services.",
+  },
+  {
+    name: "Git",
+    category: "Tools",
+    description: "Version control and collaboration.",
+  },
+  {
+    name: "CI/CD",
+    category: "Tools",
+    description: "Automated testing and deployment.",
+  },
+];
+import { Card } from "@heroui/react";
 ---
 
-<section id="skills" class="py-section bg-gradient-to-b from-slate-950 to-blue-950">
-  <div class="max-w-content mx-auto px-4">
-    <h2 class="text-4xl font-bold text-electric-blue text-center mb-16">My Tech Stack</h2>
-    
-    <!-- Royal Flush Section -->
-    <div class="mb-20">
-      <h3 class="text-2xl font-semibold text-off-white text-center mb-8">Royal Flush</h3>
-      <div class="flex justify-center gap-4 flex-wrap">
-        {Object.values(skills).flat().slice(0, 5).map((skill) => (
-          <div class="card-flip w-48 h-64">
-            <div class="card-inner">
-              <!-- Front of Card -->
-              <div class="card-front bg-rich-blue rounded-xl border-2 border-electric-blue p-6 flex flex-col justify-between">
-                <div class="text-4xl">{skill.suit}</div>
-                <div class="text-center">
-                  <h4 class="text-xl font-bold text-off-white">{skill.name}</h4>
-                  <p class="text-electric-blue">{skill.level}</p>
-                </div>
-              </div>
-              <!-- Back of Card -->
-              <div class="card-back bg-rich-blue rounded-xl border-2 border-electric-blue p-6 flex items-center justify-center">
-                <p class="text-light-gray text-center">{skill.description}</p>
-              </div>
+<section
+  id='skills'
+  class='py-section mt-24 bg-gradient-to-b from-slate-950 to-blue-900 exclusive-section'
+>
+  <div class='max-w-content mx-auto px-4'>
+    <h2 class='text-4xl font-bold text-electric-blue text-center mb-16'>
+      Royal Flush Tech Stack
+    </h2>
+    <div class='flex justify-center gap-6 flex-wrap mb-16 royal-flush-row'>
+      {
+        royalFlushSkills.map((card, idx) => (
+          <div
+            class={`relative bg-slate-900/80 border-2 border-blue-700 rounded-xl w-40 h-64 flex flex-col justify-between shadow-lg poker-card flop-card-animate`}
+            style={`animation-delay: ${idx * 0.25}s;`}
+          >
+            <div class='flex justify-between items-center px-4 pt-3'>
+              <span class='text-2xl font-bold text-electric-blue'>
+                {card.value}
+              </span>
+              <span class='text-2xl text-electric-blue'>♦</span>
+            </div>
+            <div class='flex-1 flex flex-col items-center justify-center px-4'>
+              <span class='text-2xl font-bold text-off-white mb-2'>
+                {card.skill}
+              </span>
+              <span class='text-sm text-light-gray text-center'>
+                {card.description}
+              </span>
+            </div>
+            <div class='flex justify-between items-center px-4 pb-3 rotate-180'>
+              <span class='text-2xl font-bold text-electric-blue'>
+                {card.value}
+              </span>
+              <span class='text-2xl text-electric-blue'>♦</span>
             </div>
           </div>
-        ))}
-      </div>
+        ))
+      }
     </div>
-
-    <!-- Skill Categories -->
-    <div class="grid md:grid-cols-2 gap-12">
-      {Object.entries(skills).map(([category, categorySkills]) => (
-        <div class="space-y-6">
-          <h3 class="text-2xl font-semibold text-electric-blue flex items-center gap-2">
-            <span>{categorySkills[0].suit}</span>
-            {category.charAt(0).toUpperCase() + category.slice(1)}
-          </h3>
-          <div class="grid grid-cols-2 gap-4">
-            {categorySkills.map((skill) => (
-              <div class="bg-rich-blue rounded-lg p-4 backdrop-blur-sm border border-electric-blue/20 hover:border-electric-blue transition-colors">
-                <div class="flex items-center justify-between mb-2">
-                  <h4 class="font-medium text-off-white">{skill.name}</h4>
-                  <span class="text-electric-blue">{skill.level}</span>
-                </div>
-                <p class="text-sm text-muted">{skill.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
+    <!-- Other Skills Grid -->
+    <div class='grid md:grid-cols-3 gap-8'>
+      {
+        otherSkills.map((skill) => (
+          <Card
+            client:visible
+            className='flex flex-col items-start p-6 bg-slate-900/80 border border-blue-700/20 rounded-xl shadow'
+          >
+            <h3 class='text-xl font-bold text-off-white mb-1'>{skill.name}</h3>
+            <p class='text-electric-blue text-xs mb-2'>{skill.category}</p>
+            <p class='text-light-gray text-sm'>{skill.description}</p>
+          </Card>
+        ))
+      }
     </div>
   </div>
 </section>
 
 <style>
-  .perspective-1000 {
-    perspective: 1000px;
+  .poker-card {
+    background: linear-gradient(135deg, #1e293b 60%, #334155 100%);
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+    pointer-events: none;
   }
+  .flop-animate .poker-card {
+    pointer-events: auto;
+  }
+  .poker-card:hover {
+    /* Only magnify if .flopped is present */
+  }
+  .flopped.poker-card:hover {
+    transform: translateY(-8px) scale(1.04) !important;
+    box-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.25) !important;
+  }
+  .flop-card-animate {
+    opacity: 0;
+    transform: translateX(-80px) rotateY(90deg);
+  }
+  .flop-animate .flop-card-animate {
+    animation: flop-slide-flip 1.2s cubic-bezier(0.7, 0.2, 0.2, 1) forwards;
+  }
+  @keyframes flop-slide-flip {
+    0% {
+      opacity: 0;
+      transform: translateX(-80px) rotateY(90deg);
+    }
+    60% {
+      opacity: 1;
+      transform: translateX(0) rotateY(90deg);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) rotateY(0deg);
+    }
+  }
+</style>
 
-  .card-flip {
-    perspective: 1000px;
+<script>
+  // Intersection Observer for flop animation
+  if (typeof window !== "undefined") {
+    const section = document.querySelector("#skills .royal-flush-row");
+    if (section) {
+      const observer = new window.IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              section.classList.add("flop-animate");
+              // Add .flopped to each card after its animation ends and remove the animation class
+              const cards = section.querySelectorAll(".poker-card");
+              cards.forEach((card) => {
+                card.addEventListener(
+                  "animationend",
+                  () => {
+                    card.classList.add("flopped");
+                    card.classList.remove("flop-card-animate");
+                  },
+                  { once: true },
+                );
+              });
+              observer.disconnect();
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
+      observer.observe(section);
+    }
   }
-  .card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
-    transform-style: preserve-3d;
-  }
-  .card-flip:hover .card-inner,
-  .card-flip:focus-within .card-inner {
-    transform: rotateY(180deg);
-  }
-  .card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .card-back {
-    transform: rotateY(180deg);
-  }
-  .rotate-y-180 {
-    transform: rotateY(180deg);
-  }
-</style> 
+</script>

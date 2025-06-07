@@ -1,10 +1,14 @@
+---
+import JesseButton from "./ui/JesseButton.astro";
+---
+
 <section
     id='hero'
     class='min-h-screen flex items-center justify-center relative overflow-hidden'
 >
     <!-- Background Elements -->
     <div
-        class='absolute inset-0 bg-gradient-to-br from-slate-950 to-blue-950 opacity-90'
+        class='absolute inset-0 bg-gradient-to-br from-slate-950 to-blue-900 opacity-95'
     >
     </div>
     <div class="absolute inset-0 bg-[url('/noise.png')] opacity-10"></div>
@@ -24,7 +28,12 @@
 
     <!-- Content -->
     <div class='relative z-10 text-center max-w-content mx-auto px-4'>
-        <h1 class='text-5xl md:text-7xl font-bold mb-6 animate-deal'>Zeiko</h1>
+        <div class='typewriter-container'>
+            <h1
+                class='text-5xl md:text-7xl font-bold mb-6 animate-deal typewriter'
+            >
+            </h1>
+        </div>
         <h2
             class='text-2xl md:text-3xl text-electric-blue mb-8 animate-deal'
             style='animation-delay: 0.2s'
@@ -65,4 +74,69 @@
     .animate-float {
         animation: float 3s ease-in-out infinite;
     }
+
+    .typewriter-container {
+        height: 1.2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .typewriter {
+        position: relative;
+        color: #fdfdfd;
+        border-right: 2px solid #e8e8e8;
+        white-space: nowrap;
+        overflow: hidden;
+        animation:
+            typing 3.5s steps(40, end),
+            blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+        0% {
+            width: 0;
+        }
+        50% {
+            width: 100%;
+        }
+        100% {
+            width: 100%;
+        }
+    }
+
+    @keyframes blink-caret {
+        from,
+        to {
+            border-color: transparent;
+        }
+        50% {
+            border-color: #3b82f6;
+        }
+    }
 </style>
+
+<script>
+    const titles = ["ZeikoDev.", "Camilo Gonzalez."];
+    let currentIndex = 0;
+    const typewriterElement = document.querySelector(".typewriter");
+
+    function updateTitle() {
+        if (typewriterElement) {
+            typewriterElement.textContent = titles[currentIndex];
+            typewriterElement.style.animation = "none";
+            typewriterElement.offsetHeight; // Trigger reflow
+            typewriterElement.style.animation =
+                "typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite";
+        }
+        currentIndex = (currentIndex + 1) % titles.length;
+    }
+
+    // Initial title
+    if (typewriterElement) {
+        typewriterElement.textContent = titles[0];
+    }
+
+    // Update title every 4 seconds
+    setInterval(updateTitle, 4000);
+</script>

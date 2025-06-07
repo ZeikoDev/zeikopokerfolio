@@ -1,4 +1,7 @@
 ---
+import PokerButton from "./ui/PokerButton";
+import JesseButton from "./ui/JesseButton.astro";
+
 const skills = [
     { name: "React", level: "Expert" },
     { name: "TypeScript", level: "Expert" },
@@ -11,7 +14,7 @@ const skills = [
 ];
 ---
 
-<section id='about' class='py-section relative'>
+<section id='about' class='py-section min-h-screen relative exclusive-section'>
     <div class='max-w-content mx-auto px-4'>
         <div class='flex flex-col items-center gap-12'>
             <!-- Right Column: Content (now centered) -->
@@ -32,29 +35,6 @@ const skills = [
                     management, and decision-making that I apply to my
                     development work.
                 </p>
-
-                <!-- Skills Overview -->
-                <div class='space-y-4'>
-                    <h3
-                        class='text-2xl font-semibold text-electric-blue text-center'
-                    >
-                        Key Skills
-                    </h3>
-                    <div class='grid grid-cols-2 gap-4'>
-                        {
-                            skills.map((skill) => (
-                                <div class='bg-rich-blue rounded-lg p-4 backdrop-blur-sm border border-electric-blue/20'>
-                                    <h4 class='font-medium text-off-white'>
-                                        {skill.name}
-                                    </h4>
-                                    <p class='text-sm text-muted'>
-                                        {skill.level}
-                                    </p>
-                                </div>
-                            ))
-                        }
-                    </div>
-                </div>
 
                 <!-- Stat Poker Chips -->
                 <div class='flex gap-8 justify-center mt-12'>
@@ -100,6 +80,77 @@ const skills = [
                             ></span
                         >
                     </div>
+                </div>
+                <!-- CTA JesseButton Row -->
+                <div class='flex flex-wrap justify-center gap-6 mt-12'>
+                    <a
+                        href='https://github.com/zeikodev'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                    >
+                        <JesseButton>
+                            <span slot='icon'>
+                                <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    fill='none'
+                                    viewBox='0 0 24 24'
+                                    stroke='currentColor'
+                                    class='w-7 h-7'
+                                >
+                                    <path
+                                        stroke-linecap='round'
+                                        stroke-linejoin='round'
+                                        stroke-width='2'
+                                        d='M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.339-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.987 1.029-2.686-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.699 1.028 1.593 1.028 2.686 0 3.847-2.338 4.695-4.566 4.944.359.309.678.919.678 1.852 0 1.336-.012 2.417-.012 2.747 0 .268.18.579.688.481C19.138 20.203 22 16.447 22 12.021 22 6.484 17.523 2 12 2z'
+                                    ></path>
+                                </svg>
+                            </span>
+                        </JesseButton>
+                    </a>
+                    <a
+                        href='https://linkedin.com/in/zeiko'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                    >
+                        <JesseButton>
+                            <span slot='icon'>
+                                <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    fill='none'
+                                    viewBox='0 0 24 24'
+                                    stroke='currentColor'
+                                    class='w-7 h-7'
+                                >
+                                    <path
+                                        stroke-linecap='round'
+                                        stroke-linejoin='round'
+                                        stroke-width='2'
+                                        d='M16 8a6 6 0 016 6v5a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4a2 2 0 00-4 0v4a1 1 0 01-1 1H7a1 1 0 01-1-1v-9a1 1 0 011-1h4a1 1 0 011 1v1.25M6 19a2 2 0 100-4 2 2 0 000 4z'
+                                    ></path>
+                                </svg>
+                            </span>
+                        </JesseButton>
+                    </a>
+                    <a href='mailto:contact@zeiko.dev'>
+                        <JesseButton>
+                            <span slot='icon'>
+                                <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    fill='none'
+                                    viewBox='0 0 24 24'
+                                    stroke='currentColor'
+                                    class='w-7 h-7'
+                                >
+                                    <path
+                                        stroke-linecap='round'
+                                        stroke-linejoin='round'
+                                        stroke-width='2'
+                                        d='M21 8.25V17a2 2 0 01-2 2H5a2 2 0 01-2-2V8.25m18 0A2 2 0 0019 6H5a2 2 0 00-2 2.25m18 0v.1a2 2 0 01-.553 1.39l-7.197 7.197a2 2 0 01-2.828 0L3.553 9.74A2 2 0 013 8.35v-.1'
+                                    ></path>
+                                </svg>
+                            </span>
+                        </JesseButton>
+                    </a>
                 </div>
             </div>
         </div>
