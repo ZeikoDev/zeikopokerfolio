@@ -14,22 +14,27 @@ const skills = [
 ];
 ---
 
-<section id='about' class='py-section min-h-screen relative exclusive-section'>
-    <div class='max-w-content mx-auto px-4'>
-        <div class='flex flex-col items-center gap-12'>
+<section
+    id='about'
+    class='py-section min-h-screen relative exclusive-section flex items-center justify-center'
+>
+    <div class='max-w-content mx-auto px-4 w-full'>
+        <div class='flex flex-col items-center gap-12 w-full'>
             <!-- Right Column: Content (now centered) -->
             <div class='space-y-8 w-full max-w-2xl'>
-                <h2 class='text-4xl font-bold text-electric-blue text-center'>
+                <h2
+                    class='text-4xl font-bold text-electric-blue text-center about-animate'
+                >
                     About Me
                 </h2>
-                <p class='text-lg text-light-gray text-center'>
+                <p class='text-lg text-light-gray text-center about-animate'>
                     I'm a passionate full-stack developer with a love for
                     creating elegant solutions to complex problems. With years
                     of experience in both frontend and backend development, I
                     specialize in building scalable, performant web applications
                     that deliver exceptional user experiences.
                 </p>
-                <p class='text-lg text-light-gray text-center'>
+                <p class='text-lg text-light-gray text-center about-animate'>
                     When I'm not coding, you can find me at the poker table,
                     where I've learned valuable lessons about strategy, risk
                     management, and decision-making that I apply to my
@@ -37,9 +42,11 @@ const skills = [
                 </p>
 
                 <!-- Stat Poker Chips -->
-                <div class='flex gap-8 justify-center mt-12'>
+                <div class='flex gap-8 justify-center mt-6'>
                     <!-- Years -->
-                    <div class='relative w-24 h-24 flex flex-col items-center'>
+                    <div
+                        class='relative w-24 h-24 flex flex-col items-center poker-chip-animated'
+                    >
                         <img
                             src='/poker-chip-blue.svg'
                             alt='Years Poker Chip'
@@ -53,7 +60,9 @@ const skills = [
                         >
                     </div>
                     <!-- Projects -->
-                    <div class='relative w-24 h-24 flex flex-col items-center'>
+                    <div
+                        class='relative w-24 h-24 flex flex-col items-center poker-chip-animated'
+                    >
                         <img
                             src='/poker-chip-blue.svg'
                             alt='Projects Poker Chip'
@@ -67,7 +76,9 @@ const skills = [
                         >
                     </div>
                     <!-- Passion -->
-                    <div class='relative w-24 h-24 flex flex-col items-center'>
+                    <div
+                        class='relative w-24 h-24 flex flex-col items-center poker-chip-animated'
+                    >
                         <img
                             src='/poker-chip-black.svg'
                             alt='Passion Poker Chip'
@@ -82,7 +93,7 @@ const skills = [
                     </div>
                 </div>
                 <!-- CTA JesseButton Row -->
-                <div class='flex flex-wrap justify-center gap-6 mt-12'>
+                <div class='flex flex-wrap justify-center gap-6 mt-6'>
                     <a
                         href='https://github.com/zeikodev'
                         target='_blank'
@@ -160,6 +171,92 @@ const skills = [
 <style>
     .py-section {
         padding-top: 120px;
-        padding-bottom: 120px;
+        padding-bottom: 40px;
+    }
+    .poker-chip-animated {
+        /* Remove animation by default, will be added dynamically */
+        transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+    }
+    .poker-chip-animated.bounce {
+        animation: chip-bounce-in 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+    .poker-chip-animated:hover {
+        transform: scale(1.08) rotate(-6deg);
+        box-shadow:
+            0 0 24px 0 #38bdf8,
+            0 0 8px 2px #0ea5e9;
+        z-index: 2;
+    }
+    @keyframes chip-bounce-in {
+        0% {
+            opacity: 0;
+            transform: scale(0.7) translateY(60px);
+        }
+        60% {
+            opacity: 1;
+            transform: scale(1.1) translateY(-12px);
+        }
+        80% {
+            transform: scale(0.96) translateY(4px);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+    }
+    .about-animate {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+            opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .about-animate.visible {
+        opacity: 1;
+        transform: translateY(0);
     }
 </style>
+
+<script>
+    if (typeof window !== "undefined") {
+        window.addEventListener("DOMContentLoaded", () => {
+            const aboutSection =
+                document.getElementById("about") ||
+                document.querySelector(".exclusive-section");
+            const chips = aboutSection
+                ? aboutSection.querySelectorAll(".poker-chip-animated")
+                : [];
+            const aboutText = aboutSection
+                ? aboutSection.querySelectorAll(".about-animate")
+                : [];
+            let animated = false;
+            if (aboutSection && (chips.length || aboutText.length)) {
+                const observer = new window.IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting && !animated) {
+                                aboutText.forEach((el, idx) => {
+                                    setTimeout(
+                                        () => el.classList.add("visible"),
+                                        idx * 180,
+                                    );
+                                });
+                                chips.forEach((chip, idx) => {
+                                    setTimeout(
+                                        () => chip.classList.add("bounce"),
+                                        400 + idx * 120,
+                                    );
+                                });
+                                animated = true;
+                            }
+                        });
+                    },
+                    { threshold: 0.4 },
+                );
+                observer.observe(aboutSection);
+            }
+        });
+    }
+</script>

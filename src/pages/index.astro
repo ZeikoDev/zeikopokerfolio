@@ -4,17 +4,16 @@ import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
 import Skills from "../components/Skills.astro";
 import Projects from "../components/Projects.astro";
-
 ---
 
 <Layout
-	title='Zeiko - Full Stack Developer'
+	title='ZeikoDev - Full Stack Developer & Poker Enthusiast'
 	description='Full-stack developer specializing in React, Node.js, and modern web technologies. Building winning applications with a poker-inspired approach to development.'
 >
-	<Hero />
-	<About />
-	<Skills />
-	<Projects />
+	<section id='hero' class='min-h-screen'><Hero /></section>
+	<section id='about' class='min-h-screen'><About /></section>
+	<section id='skills' class='min-h-screen'><Skills /></section>
+	<section id='projects' class='min-h-screen'><Projects /></section>
 </Layout>
 
 <script>
@@ -103,7 +102,7 @@ import Projects from "../components/Projects.astro";
 
 	.exclusive-section {
 		opacity: 0;
-		pointer-events: none;
+		/* pointer-events: none; */
 		transition: opacity 0.5s;
 	}
 	.exclusive-section.visible-section {

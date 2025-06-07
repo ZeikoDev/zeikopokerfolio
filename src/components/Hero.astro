@@ -1,7 +1,3 @@
----
-import JesseButton from "./ui/JesseButton.astro";
----
-
 <section
     id='hero'
     class='min-h-screen flex items-center justify-center relative overflow-hidden'
@@ -113,6 +109,12 @@ import JesseButton from "./ui/JesseButton.astro";
         50% {
             border-color: #3b82f6;
         }
+    }
+
+    .exclusive-section {
+        opacity: 0;
+        /* pointer-events: none; */
+        transition: opacity 0.5s;
     }
 </style>
 
