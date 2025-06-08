@@ -1,35 +1,6 @@
 ---
 import JesseButton from "./ui/JesseButton.astro";
-
-const projects = [
-  {
-    name: 'E-Commerce Platform',
-    hand: 'Royal Flush',
-    description: 'A full-featured e-commerce platform with real-time inventory and payment processing',
-    technologies: ['React', 'Node.js', 'PostgreSQL', 'Redis', 'AWS'],
-    impact: '10k+ users',
-    complexity: 'High',
-    image: '/projects/ecommerce.jpg',
-  },
-  {
-    name: 'Real-time Chat Application',
-    hand: 'Straight Flush',
-    description: 'WebSocket-based chat application with end-to-end encryption',
-    technologies: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
-    impact: '5k+ users',
-    complexity: 'Medium',
-    image: '/projects/chat.jpg',
-  },
-  {
-    name: 'Task Management System',
-    hand: 'Full House',
-    description: 'Project management tool with real-time collaboration features',
-    technologies: ['React', 'GraphQL', 'PostgreSQL', 'Docker'],
-    impact: '2k+ users',
-    complexity: 'Medium',
-    image: '/projects/tasks.jpg',
-  },
-];
+import { projects } from "../data/projects";
 ---
 
 <section id="projects" class="py-section relative exclusive-section">
@@ -85,27 +56,36 @@ const projects = [
               </div>
 
               <!-- View Project Button -->
-              <JesseButton variant="text" size="large" showText={true}>
-                <span slot="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </span>
-                View Project
-              </JesseButton>
+              {project.externalLink && project.externalLink !== 'null' ? (
+                <JesseButton
+                  href={project.externalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="text"
+                  size="large"
+                  showText={true}
+                >
+                  <span slot="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </span>
+                  View Project
+                </JesseButton>
+              ) : (
+                <JesseButton variant="text" size="large" showText={true} disabled>
+                  <span slot="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </span>
+                  View Project
+                </JesseButton>
+              )}
             </div>
           </div>
         </div>
       ))}
-    </div>
-
-    <!-- Dealer's Choice Section -->
-    <div class="mt-24 text-center">
-      <h3 class="text-2xl font-semibold text-electric-blue mb-8">Dealer's Choice</h3>
-      <p class="text-lg text-light-gray max-w-2xl mx-auto">
-        These are just a few of my favorite projects. Each one represents a unique challenge 
-        and an opportunity to push the boundaries of what's possible in web development.
-      </p>
     </div>
   </div>
 </section>
