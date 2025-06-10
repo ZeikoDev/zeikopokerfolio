@@ -1,0 +1,241 @@
+---
+import JesseButton from "./ui/JesseButton.astro";
+import { personalProjects } from "../data/personalProjects";
+
+const projects = [
+    {
+        name: "Poker Stats Analyzer",
+        description:
+            "Herramienta para analizar manos y estadísticas de poker en tiempo real.",
+        technologies: ["Node.js", "PostgreSQL", "Chart.js"],
+        image: "",
+        details: {
+            longDescription:
+                "Desarrollé una app para jugadores de poker que permite cargar y analizar manos, ver estadísticas avanzadas y compartir resultados. Incluye autenticación, dashboards y exportación de datos.",
+            highlights: [
+                "Carga y análisis de manos en tiempo real",
+                "Dashboards personalizables",
+                "Exportación a CSV y PDF",
+            ],
+            screenshots: [],
+        },
+    },
+];
+---
+
+<section id='personal-projects' class='py-section min-h-screen'>
+    <div class='max-w-content mx-auto px-4'>
+        <h2 class='text-4xl font-bold text-electric-blue text-center mb-16'>
+            Personal Projects
+        </h2>
+        <div class='grid md:grid-cols-2 gap-12'>
+            {
+                personalProjects.map((project, idx) => (
+                    <div class='bg-slate-900/80 border-2 border-blue-700 rounded-2xl shadow-lg p-6 flex flex-col items-center poker-card relative'>
+                        <img
+                            src={project.image}
+                            alt={project.name}
+                            class='w-32 h-32 object-contain mb-4 rounded-xl border border-blue-700/30 bg-slate-800'
+                        />
+                        <h3 class='text-2xl font-bold text-off-white mb-2 text-center'>
+                            {project.name}
+                        </h3>
+                        <p class='text-light-gray text-center mb-4'>
+                            {project.description}
+                        </p>
+                        <div class='flex flex-wrap gap-2 mb-6 justify-center'>
+                            {project.technologies.map((tech) => (
+                                <span class='px-3 py-1 bg-blue-900/80 text-electric-blue rounded-full text-xs border border-blue-700/40'>
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
+                        {project.externalUrl ? (
+                            <JesseButton
+                                href={project.externalUrl}
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                variant='text'
+                                showText={true}
+                                size='large'
+                            >
+                                <span slot='icon'>
+                                    <svg
+                                        xmlns='http://www.w3.org/2000/svg'
+                                        fill='none'
+                                        viewBox='0 0 24 24'
+                                        stroke='currentColor'
+                                        class='w-5 h-5'
+                                    >
+                                        <path
+                                            stroke-linecap='round'
+                                            stroke-linejoin='round'
+                                            stroke-width='2'
+                                            d='M14 3h7m0 0v7m0-7L10 14'
+                                        />
+                                    </svg>
+                                </span>
+                                Ver Proyecto
+                            </JesseButton>
+                        ) : (
+                            <JesseButton
+                                variant='text'
+                                showText={true}
+                                size='large'
+                                data-idx={idx}
+                                class='open-modal-btn'
+                            >
+                                <span slot='icon'>
+                                    <svg
+                                        xmlns='http://www.w3.org/2000/svg'
+                                        fill='none'
+                                        viewBox='0 0 24 24'
+                                        stroke='currentColor'
+                                        class='w-5 h-5'
+                                    >
+                                        <path
+                                            stroke-linecap='round'
+                                            stroke-linejoin='round'
+                                            stroke-width='2'
+                                            d='M15 12H9m6 0a6 6 0 11-12 0 6 6 0 0112 0z'
+                                        />
+                                    </svg>
+                                </span>
+                                More Details
+                            </JesseButton>
+                        )}
+                    </div>
+                ))
+            }
+        </div>
+
+        <div
+            id='project-modal'
+            class='hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50 fade-in-modal'
+        >
+            <div
+                class='bg-slate-900 border-2 border-blue-700 rounded-2xl shadow-2xl p-8 max-w-lg w-full relative'
+                id='modal-content'
+            >
+                <button
+                    class='absolute top-4 right-4 text-electric-blue text-2xl'
+                    id='close-modal-btn'
+                    aria-label='Cerrar'>&times;</button
+                >
+                <h3
+                    class='text-2xl font-bold text-electric-blue mb-2'
+                    id='modal-title'
+                >
+                </h3>
+                <p class='text-light-gray mb-4' id='modal-desc'></p>
+                <ul
+                    class='list-disc list-inside text-off-white mb-4'
+                    id='modal-highlights'
+                >
+                </ul>
+                <div
+                    class='flex gap-4 flex-wrap justify-center'
+                    id='modal-screenshots'
+                >
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script is:inline>
+    const projects = JSON.parse("{JSON.stringify(personalProjects)}");
+    let modal = null;
+    let modalContent = null;
+    let closeModalBtn = null;
+    let highlightsList = null;
+    let screenshotsDiv = null;
+    let modalTitle = null;
+    let modalDesc = null;
+
+    function openModal(idx) {
+        const project = projects[idx];
+        if (!project || !project.details) return;
+        modal = document.getElementById("project-modal");
+        modalContent = document.getElementById("modal-content");
+        closeModalBtn = document.getElementById("close-modal-btn");
+        highlightsList = document.getElementById("modal-highlights");
+        screenshotsDiv = document.getElementById("modal-screenshots");
+        modalTitle = document.getElementById("modal-title");
+        modalDesc = document.getElementById("modal-desc");
+
+        modalTitle.textContent = project.name;
+        modalDesc.textContent = project.details.longDescription;
+        highlightsList.innerHTML = "";
+        project.details.highlights.forEach((item) => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            highlightsList.appendChild(li);
+        });
+        screenshotsDiv.innerHTML = "";
+        project.details.screenshots.forEach((src) => {
+            const img = document.createElement("img");
+            img.src = src;
+            img.alt = "Screenshot";
+            img.className =
+                "w-32 h-20 object-cover rounded border border-blue-700/30";
+            screenshotsDiv.appendChild(img);
+        });
+        modal.classList.remove("hidden");
+    }
+
+    function closeModal() {
+        modal = document.getElementById("project-modal");
+        modal.classList.add("hidden");
+    }
+
+    if (typeof window !== "undefined") {
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".open-modal-btn").forEach((btn) => {
+                btn.addEventListener("click", (e) => {
+                    const idx = btn.getAttribute("data-idx");
+                    openModal(idx);
+                });
+            });
+            document
+                .getElementById("close-modal-btn")
+                .addEventListener("click", closeModal);
+            document
+                .getElementById("project-modal")
+                .addEventListener("click", closeModal);
+            document
+                .getElementById("modal-content")
+                .addEventListener("click", (e) => e.stopPropagation());
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeModal();
+            });
+        });
+    }
+</script>
+
+<style>
+    .poker-card {
+        background: linear-gradient(135deg, #1e293b 60%, #334155 100%);
+        box-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.1);
+        border-radius: 1.5rem;
+        border: 2px solid #2563eb33;
+        transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+    }
+    .poker-card:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 12px 40px 0 rgba(59, 130, 246, 0.18);
+    }
+    .fade-in-modal {
+        animation: fadeInModal 0.3s ease;
+    }
+    @keyframes fadeInModal {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+</style>
