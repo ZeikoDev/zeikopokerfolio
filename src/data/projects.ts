@@ -7,6 +7,7 @@ export interface Project {
     complexity: string;
     image: string;
     externalLink?: string;
+    slug: string;
 }
 
 export const projects: Project[] = [
@@ -19,6 +20,7 @@ export const projects: Project[] = [
         complexity: 'High',
         image: '/src/assets/proyects/premiumacademy.png',
         externalLink: 'https://premiumacademy.pro',
+        slug: 'premium-academy',
     },
     {
         name: 'Arcopedicousa',
@@ -29,6 +31,7 @@ export const projects: Project[] = [
         complexity: 'Medium',
         image: '/src/assets/proyects/Arcopedicousa.png',
         externalLink: 'https://arcopedicousa.com',
+        slug: 'arcopedicousa',
     },
     {
         name: 'Aprendizaje en español ITM',
@@ -38,5 +41,6 @@ export const projects: Project[] = [
         impact: '100+ users',
         complexity: 'Medium',
         image: '/src/assets/proyects/aprendizajenespanol.png',
+        slug: 'itm',
     },
 ]; 

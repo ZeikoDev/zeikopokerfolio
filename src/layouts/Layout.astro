@@ -165,4 +165,46 @@ const { title, description } = Astro.props;
 		background: #3b82f6;
 		color: #f8fafc;
 	}
+
+	/* Sidebar active state */
+	.sidebar-active,
+	a.active {
+		color: #3b82f6 !important;
+		filter: drop-shadow(0 0 6px #3b82f6);
+	}
 </style>
+
+<script is:inline>
+	document.addEventListener("DOMContentLoaded", () => {
+		const sections = ["hero", "about", "skills", "projects"];
+		const navLinks = sections.map((id) =>
+			document.querySelector(`a[href='#${id}']`),
+		);
+
+		function onScroll() {
+			let current = "";
+			for (const id of sections) {
+				const section = document.getElementById(id);
+				if (section) {
+					const rect = section.getBoundingClientRect();
+					if (rect.top <= 120 && rect.bottom > 120) {
+						current = id;
+						break;
+					}
+				}
+			}
+			navLinks.forEach((link, i) => {
+				if (link) {
+					if (sections[i] === current) {
+						link.classList.add("active", "sidebar-active");
+					} else {
+						link.classList.remove("active", "sidebar-active");
+					}
+				}
+			});
+		}
+
+		window.addEventListener("scroll", onScroll, { passive: true });
+		onScroll();
+	});
+</script>
