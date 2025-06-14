@@ -1,0 +1,105 @@
+---
+import { personalProjects } from "../../data/personalProjects";
+import JesseButton from "../../components/ui/JesseButton.astro";
+const project = personalProjects.find((p) => p.slug === "discotek");
+const highlights = project?.details.highlights ?? [];
+const technologies = project?.technologies ?? [];
+const screenshots = project?.details.screenshots ?? [];
+---
+
+<html lang='en'>
+    <head>
+        <title>
+            {
+                project
+                    ? `${project.name} | Project Details`
+                    : "Project Not Found"
+            }
+        </title>
+        <meta
+            name='description'
+            content={project ? project.description : "Project not found"}
+        />
+    </head>
+    <body class='bg-slate-950 text-off-white min-h-screen'>
+        <section class='max-w-3xl mx-auto py-16 px-4'>
+            <a
+                href='/'
+                class='text-electric-blue hover:underline mb-8 inline-block'
+                >&larr; Back to Projects</a
+            >
+            {
+                project ? (
+                    <>
+                        <h1 class='text-4xl font-bold text-electric-blue mb-6'>
+                            {project.name}
+                        </h1>
+                        <p class='mb-6 text-lg text-light-gray'>
+                            {project.details.longDescription}
+                        </p>
+
+                        <h2 class='text-2xl font-semibold mt-8 mb-2 text-off-white'>
+                            Key Features
+                        </h2>
+                        <ul class='list-disc pl-6 mb-6 text-light-gray'>
+                            {highlights.map((h) => (
+                                <li class='mb-2'>{h}</li>
+                            ))}
+                        </ul>
+
+                        <h2 class='text-2xl font-semibold mt-8 mb-2 text-off-white'>
+                            Tech Stack
+                        </h2>
+                        <div class='flex flex-wrap gap-2 mb-8'>
+                            {technologies.map((t) => (
+                                <span class='px-3 py-1 bg-slate-800 rounded-full text-xs text-off-white border border-blue-700/20'>
+                                    {t}
+                                </span>
+                            ))}
+                        </div>
+
+                        <JesseButton
+                            href='https://github.com/zeikodev/DK'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            variant='text'
+                            size='large'
+                            showText={true}
+                        >
+                            <span slot='icon'>
+                                <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    fill='currentColor'
+                                    viewBox='0 0 24 24'
+                                    class='w-5 h-5'
+                                >
+                                    <path d='M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.186 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.987 1.029-2.686-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.699 1.028 1.593 1.028 2.686 0 3.847-2.337 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .267.18.577.688.479C19.138 20.203 22 16.447 22 12.021 22 6.484 17.523 2 12 2Z' />
+                                </svg>
+                            </span>
+                            View on GitHub
+                        </JesseButton>
+
+                        <h2 class='text-2xl font-semibold mt-8 mb-2 text-off-white'>
+                            Screenshots
+                        </h2>
+                        <div class='grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8'>
+                            {screenshots.slice(1).map((s, idx) => (
+                                <img
+                                    src={s}
+                                    alt={`Discotek screenshot ${idx + 1}`}
+                                    class={`rounded-lg border border-blue-700/20 shadow-lg object-cover${screenshots.length === 2 ? " sm:col-span-2" : ""}`}
+                                    loading='lazy'
+                                    style='max-width:100%;height:auto;'
+                                />
+                            ))}
+                        </div>
+                    </>
+                ) : (
+                    <h1 class='text-3xl font-bold text-red-500'>
+                        Project not found
+                    </h1>
+                )
+            }
+        </section>
+    </body>
+</html>
