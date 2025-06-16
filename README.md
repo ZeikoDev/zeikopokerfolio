@@ -31,12 +31,14 @@ A modern, poker-themed full-stack developer portfolio built with Astro.js. This 
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/yourusername/zeiko-pokerfolio.git
    cd zeiko-pokerfolio
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    # or
@@ -44,6 +46,7 @@ A modern, poker-themed full-stack developer portfolio built with Astro.js. This 
    ```
 
 3. Start the development server:
+
    ```bash
    npm run dev
    # or

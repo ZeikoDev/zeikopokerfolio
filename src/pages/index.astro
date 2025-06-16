@@ -23,18 +23,23 @@ import Projects from "../components/Projects.astro";
 <script>
 	// Smooth scroll behavior for navigation
 	document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-		anchor.addEventListener("click", function (e: Event) {
-			e.preventDefault();
-			const target = document.querySelector(
-				(this as HTMLAnchorElement).getAttribute("href") || "",
-			);
-			if (target) {
-				target.scrollIntoView({
-					behavior: "smooth",
-					block: "start",
-				});
-			}
-		});
+		(anchor as HTMLAnchorElement).addEventListener(
+			"click",
+			function (e: Event) {
+				e.preventDefault();
+				const target = document.querySelector(
+					(e.currentTarget as HTMLAnchorElement)?.getAttribute(
+						"href",
+					) || "",
+				);
+				if (target) {
+					target.scrollIntoView({
+						behavior: "smooth",
+						block: "start",
+					});
+				}
+			},
+		);
 	});
 
 	// Intersection Observer for animations

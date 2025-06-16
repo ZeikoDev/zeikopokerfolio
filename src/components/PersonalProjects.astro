@@ -22,7 +22,8 @@ import ProjectModal from "./ui/ProjectModal.astro";
                         <img
                             src={project.image}
                             alt={project.name}
-                            class='w-[200px] h-[120px] object-contain mb-3 rounded-xl border border-blue-700/30'
+                            class='w-[200px] h-[120px] object-cover mb-3 rounded-xl border border-blue-700/30'
+                            style='width:200px;height:120px;object-fit:cover;'
                         />
                         <h3 class='text-xl font-bold text-off-white mb-2 text-center'>
                             {project.name}

@@ -1,7 +1,9 @@
 ---
 import { personalProjects } from "../../data/personalProjects";
 import JesseButton from "../../components/ui/JesseButton.astro";
-const project = personalProjects.find((p) => p.slug === "easylife");
+const project = personalProjects.find(
+    (p) => p.slug === "patient-management-system",
+);
 const highlights = project?.details.highlights ?? [];
 const technologies = project?.technologies ?? [];
 const screenshots = project?.details.screenshots ?? [];
@@ -59,7 +61,7 @@ const screenshots = project?.details.screenshots ?? [];
                         </div>
 
                         <JesseButton
-                            href='https://github.com/zeikodev/easylife'
+                            href='https://github.com/ZeikoDev/Manejo-de-pacientes'
                             target='_blank'
                             rel='noopener noreferrer'
                             variant='text'
@@ -83,13 +85,13 @@ const screenshots = project?.details.screenshots ?? [];
                             Screenshots
                         </h2>
                         <div class='grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8'>
-                            {screenshots.slice(1).map((s, idx) => (
+                            {screenshots.map((s, idx) => (
                                 <img
                                     src={s}
-                                    alt={`Easylife screenshot ${idx + 1}`}
-                                    class={`rounded-lg border border-blue-700/20 shadow-lg object-cover${screenshots.length === 2 ? " sm:col-span-2" : ""}`}
+                                    alt={`Patient Management System screenshot ${idx + 1}`}
+                                    class={`rounded-lg border border-blue-700/20 shadow-lg screenshot-img${screenshots.length === 1 ? " sm:col-span-2" : ""}`}
                                     loading='lazy'
-                                    style='max-width:100%;height:auto;'
+                                    style='width:100%;height:100%;object-fit:cover;'
                                 />
                             ))}
                         </div>

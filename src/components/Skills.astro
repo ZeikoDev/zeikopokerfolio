@@ -1,115 +1,72 @@
 ---
 const skills = [
-  {
-    name: "React",
-    category: "Frontend",
-    icon: "/poker-chip-blue.svg",
-    description:
-      "Building interactive UIs and SPAs with hooks, context, and modern patterns.",
-  },
-  {
-    name: "TypeScript",
-    category: "Frontend",
-    icon: "/poker-chip-blue.svg",
-    description: "Type-safe, scalable codebases and advanced type features.",
-  },
-  {
-    name: "Node.js",
-    category: "Backend",
-    icon: "/poker-chip-black.svg",
-    description:
-      "APIs, real-time apps, and backend logic with Express and more.",
-  },
-  {
-    name: "PostgreSQL",
-    category: "Backend",
-    icon: "/poker-chip-black.svg",
-    description: "Relational data modeling, complex queries, and migrations.",
-  },
-  {
-    name: "Docker",
-    category: "Tools",
-    icon: "/poker-chip-blue.svg",
-    description: "Containerization, local dev, and deployment workflows.",
-  },
-  {
-    name: "AWS",
-    category: "Tools",
-    icon: "/poker-chip-black.svg",
-    description: "Cloud infrastructure, hosting, and scaling.",
-  },
+  { name: "JavaScript/TypeScript", category: "Frontend" },
+  { name: "React", category: "Frontend" },
+  { name: "React Native", category: "Frontend" },
+  { name: "HTML", category: "Frontend" },
+  { name: "CSS", category: "Frontend" },
+  { name: "TailwindCSS", category: "Frontend" },
+  { name: "Swift/SwiftUI", category: "Frontend" },
+  { name: "Node.js", category: "Backend" },
+  { name: "Python", category: "Backend" },
+  { name: "Django", category: "Backend" },
+  { name: "Firebase/Firestore", category: "Backend" },
+  { name: "PostgreSQL", category: "Database" },
+  { name: "MongoDB", category: "Database" },
+  { name: "Git/Github", category: "Tools" },
+  { name: "Testing(Jest)", category: "Testing" },
+  { name: "AWS(EC2,S3)", category: "Cloud" },
+  { name: "REST API", category: "Backend" },
+  { name: "UX/UI Design", category: "Design" },
 ];
 
 const royalFlushSkills = [
   {
     value: "A",
     skill: "React",
-    description: "Building interactive UIs and SPAs.",
+    description: "Modern web apps and component-driven UIs.",
   },
   {
     value: "K",
     skill: "TypeScript",
-    description: "Type-safe, scalable codebases.",
+    description: "Type-safe, scalable JavaScript for robust apps.",
   },
-  { value: "Q", 
-  skill: "JavaScript", 
-  description: "APIs and backend logic." },
-  { value: "J", 
-  skill: "PostgreSQL", 
-  description: "Relational data modeling." },
+  {
+    value: "Q",
+    skill: "Node.js",
+    description: "Backend APIs, real-time services, and tooling.",
+  },
+  {
+    value: "J",
+    skill: "PostgreSQL",
+    description: "Relational data modeling and advanced queries.",
+  },
   {
     value: "T",
-    skill: "Python",
-    description: "Containerization and deployment.",
+    skill: "React Native",
+    description: "Cross-platform mobile apps with native feel.",
   },
 ];
 
 const otherSkills = [
-  {
-    name: "Next.js",
-    category: "Frontend",
-    description: "Server-side rendering and static site generation.",
-  },
-  {
-    name: "Tailwind CSS",
-    category: "Frontend",
-    description: "Utility-first CSS framework mastery.",
-  },
-  {
-    name: "Python",
-    category: "Backend",
-    description: "Data processing and API development.",
-  },
-  {
-    name: "GraphQL",
-    category: "Backend",
-    description: "Flexible API querying and schema design.",
-  },
-  {
-    name: "MongoDB",
-    category: "Database",
-    description: "NoSQL database design and optimization.",
-  },
-  {
-    name: "Redis",
-    category: "Database",
-    description: "Caching and real-time features.",
-  },
-  {
-    name: "AWS",
-    category: "Tools",
-    description: "Cloud infrastructure and services.",
-  },
-  {
-    name: "Git",
-    category: "Tools",
-    description: "Version control and collaboration.",
-  },
-  {
-    name: "CI/CD",
-    category: "Tools",
-    description: "Automated testing and deployment.",
-  },
+  // Frontend
+  { name: "JavaScript/TypeScript", category: "Frontend" },
+  { name: "HTML & CSS", category: "Frontend" },
+  { name: "TailwindCSS", category: "Frontend" },
+  // Backend
+  { name: "Python", category: "Backend" },
+  { name: "Django", category: "Backend" },
+  { name: "REST API", category: "Backend" },
+  // Database
+  { name: "MongoDB", category: "Database" },
+  // Cloud/DevOps
+  { name: "AWS (EC2, S3)", category: "Cloud" },
+  { name: "Firebase/Firestore", category: "Cloud" },
+  // Tools
+  { name: "Git/GitHub", category: "Tools" },
+  { name: "Testing (Jest)", category: "Tools" },
+  // Design
+  { name: "UX/UI Design", category: "Design" },
 ];
 import { Card } from "@heroui/react";
 ---
@@ -136,7 +93,7 @@ import { Card } from "@heroui/react";
               <span class='text-2xl text-electric-blue'>♦</span>
             </div>
             <div class='flex-1 flex flex-col items-center justify-center px-4'>
-              <span class='text-2xl font-bold text-off-white mb-2'>
+              <span class='royal-flush-title text-off-white mb-2 text-center'>
                 {card.skill}
               </span>
               <span class='text-sm text-light-gray text-center'>
@@ -163,7 +120,6 @@ import { Card } from "@heroui/react";
           >
             <h3 class='text-xl font-bold text-off-white mb-1'>{skill.name}</h3>
             <p class='text-electric-blue text-xs mb-2'>{skill.category}</p>
-            <p class='text-light-gray text-sm'>{skill.description}</p>
           </Card>
         ))
       }
@@ -209,6 +165,13 @@ import { Card } from "@heroui/react";
       opacity: 1;
       transform: translateX(0) rotateY(0deg);
     }
+  }
+  .royal-flush-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.1;
+    word-break: normal;
+    white-space: normal;
   }
 </style>
 
