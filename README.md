@@ -1,3 +1,4 @@
+
 # Zeiko Pokerfolio
 
 A modern, poker-themed full-stack developer portfolio built with Astro.js. This portfolio showcases development skills through an engaging poker-inspired design, featuring smooth animations, interactive elements, and a responsive layout.
@@ -5,10 +6,8 @@ A modern, poker-themed full-stack developer portfolio built with Astro.js. This 
 ## Features
 
 - 🎮 Poker-themed design elements and animations
-- 🌙 Dark mode optimized with deep blue gradients
 - 📱 Fully responsive layout
 - ⚡ Built with Astro.js for optimal performance
-- 🎨 Modern UI with glass morphism effects
 - 🎯 Smooth scroll navigation
 - 🎴 Interactive poker card components
 - 📊 Skills visualization with poker hands
@@ -98,7 +97,6 @@ The color scheme can be customized in `tailwind.config.mjs`. The current theme u
 
 - Deep navy backgrounds
 - Electric blue accents
-- Gold poker chip elements
 - White/light gray text
 
 ### Content
@@ -111,53 +109,9 @@ Update the content in the respective component files:
 - `Projects.astro` - Portfolio projects
 - `Contact.astro` - Contact information and form
 
-## Contributing
+## Development
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Poker theme inspiration from various poker websites and games
-- Design elements inspired by modern web trends
-- Icons from various open-source icon sets
-
-```sh
-npm create astro@latest -- --template basics
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
+### Available Commands
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
@@ -166,8 +120,14 @@ All commands are run from the root of the project, from a terminal:
 | `npm run build`           | Build your production site to `./dist/`          |
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## License
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Design elements inspired by modern web trends
+- Icons from various open-source icon sets
+
+
