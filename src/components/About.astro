@@ -1,5 +1,4 @@
 ---
-import PokerButton from "./ui/PokerButton";
 import JesseButton from "./ui/JesseButton.astro";
 
 const skills = [
@@ -28,11 +27,7 @@ const skills = [
                     About Me
                 </h2>
                 <p class='text-lg text-light-gray text-center about-animate'>
-                    I'm a passionate full-stack developer with a love for
-                    creating elegant solutions to complex problems. With years
-                    of experience in both frontend and backend development, I
-                    specialize in building scalable, performant web applications
-                    that deliver exceptional user experiences.
+                    I’m a passionate full stack developer who enjoys creating innovative software solutions in challenging environments, using technology as a tool to achieve goals and streamline processes.
                 </p>
                 <p class='text-lg text-light-gray text-center about-animate'>
                     When I'm not coding, you can find me at the poker table,
@@ -42,54 +37,48 @@ const skills = [
                 </p>
 
                 <!-- Stat Poker Chips -->
-                <div class='flex gap-8 justify-center mt-6'>
+                <div class='flex gap-12 justify-center mt-8'>
                     <!-- Years -->
                     <div
-                        class='relative w-24 h-24 flex flex-col items-center poker-chip-animated'
+                        class='relative w-32 h-32 flex flex-col items-center poker-chip-animated'
                     >
                         <img
                             src='/poker-chip-blue.svg'
                             alt='Years Poker Chip'
                             class='w-full h-full'
                         />
-                        <span
-                            class='absolute inset-0 flex flex-col items-center justify-center text-white font-bold text-lg'
-                            >2+<br /><span class='text-xs font-normal'
-                                >Years</span
-                            ></span
-                        >
+                        <span class='chip-text chip-years'>
+                            <span class='main'>2+</span>
+                            <span class='sub'>Years</span>
+                        </span>
                     </div>
-                    <!-- Projects -->
+                    <!-- Impact -->
                     <div
-                        class='relative w-24 h-24 flex flex-col items-center poker-chip-animated'
+                        class='relative w-32 h-32 flex flex-col items-center poker-chip-animated'
                     >
                         <img
                             src='/poker-chip-blue.svg'
                             alt='Projects Poker Chip'
                             class='w-full h-full'
                         />
-                        <span
-                            class='absolute inset-0 flex flex-col items-center justify-center text-white font-bold text-lg'
-                            >5K+<br /><span class='text-xs font-normal'
-                                >Users Impacted</span
-                            ></span
-                        >
+                        <span class='chip-text chip-impact'>
+                            <span class='main'>15K+</span>
+                            <span class='sub'>Users<br />impacted</span>
+                        </span>
                     </div>
                     <!-- Passion -->
                     <div
-                        class='relative w-24 h-24 flex flex-col items-center poker-chip-animated'
+                        class='relative w-32 h-32 flex flex-col items-center poker-chip-animated'
                     >
                         <img
-                            src='/poker-chip-black.svg'
+                            src='/poker-chip-blue.svg'
                             alt='Passion Poker Chip'
                             class='w-full h-full'
                         />
-                        <span
-                            class='absolute inset-0 flex flex-col items-center justify-center text-white font-bold text-lg'
-                            >∞<br /><span class='text-xs font-normal'
-                                >Passion</span
-                            ></span
-                        >
+                        <span class='chip-text chip-passion'>
+                            <span class='main'>&#8734;</span>
+                            <span class='sub'>Passion</span>
+                        </span>
                     </div>
                 </div>
                 <!-- CTA JesseButton Row -->
@@ -119,7 +108,7 @@ const skills = [
                         </JesseButton>
                     </a>
                     <a
-                        href='https://linkedin.com/in/zeiko'
+                        href='https://linkedin.com/in/juan-camilo-gonzalez-hoyos'
                         target='_blank'
                         rel='noopener noreferrer'
                     >
@@ -142,7 +131,7 @@ const skills = [
                             </span>
                         </JesseButton>
                     </a>
-                    <a href='mailto:contact@zeiko.dev'>
+                    <a href='mailto:jcgonzalez4183@gmail.com'>
                         <JesseButton>
                             <span slot='icon'>
                                 <svg
@@ -209,6 +198,61 @@ const skills = [
     .about-animate.visible {
         opacity: 1;
         transform: translateY(0);
+    }
+    .text-light-gray {
+        color: #e2e8f0;
+        line-height: 1.8;
+    }
+    .chip-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font-weight: 900;
+        text-shadow:
+            0 2px 8px rgba(0, 0, 0, 0.25),
+            0 1px 0 #222;
+        pointer-events: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .chip-years .main {
+        font-size: 1.4rem;
+        font-weight: 900;
+        line-height: 1.1;
+    }
+    .chip-years .sub {
+        font-size: 0.7rem;
+        font-weight: 500;
+        margin-top: 0.1em;
+        line-height: 1.1;
+    }
+    .chip-impact .main {
+        font-size: 1.05rem;
+        font-weight: 900;
+        line-height: 1.1;
+    }
+    .chip-impact .sub {
+        font-size: 0.6rem;
+        font-weight: 500;
+        margin-top: 0.1em;
+        line-height: 1.1;
+    }
+    .chip-passion .main {
+        font-size: 1.5rem;
+        font-weight: 900;
+        line-height: 1.1;
+    }
+    .chip-passion .sub {
+        font-size: 0.7rem;
+        font-weight: 500;
+        margin-top: 0.1em;
+        line-height: 1.1;
     }
 </style>
 
