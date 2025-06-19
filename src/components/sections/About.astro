@@ -1,6 +1,6 @@
 ---
-import JesseButton from "../ui/buttons/JesseButton.astro";
-import { useTranslations } from "../../i18n/utils.ts";
+import JesseButton from "@/components/ui/buttons/JesseButton.astro";
+import { useTranslations } from "@/i18n/utils";
 
 const { lang } = Astro.params;
 const currentLang = (lang as "en" | "es") || "en";

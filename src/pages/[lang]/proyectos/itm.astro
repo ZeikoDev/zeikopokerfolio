@@ -1,6 +1,6 @@
 ---
-import { projects } from "../../../data/projects";
-import { useTranslations } from "../../../i18n/utils.ts";
+import { projects } from "@/data/projects";
+import { useTranslations } from "@/i18n/utils";
 
 export async function getStaticPaths() {
     return [{ params: { lang: "es" } }, { params: { lang: "en" } }];

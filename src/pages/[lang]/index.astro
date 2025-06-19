@@ -1,11 +1,11 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Hero from "../../components/sections/Hero.astro";
-import About from "../../components/sections/About.astro";
-import PersonalProjects from "../../components/sections/PersonalProjects.astro";
-import Skills from "../../components/sections/Skills.astro";
-import Projects from "../../components/sections/Projects.astro";
-import { useTranslations, languages } from "../../i18n/utils.ts";
+import Layout from "@/layouts/Layout.astro";
+import Hero from "@/components/sections/Hero.astro";
+import About from "@/components/sections/About.astro";
+import PersonalProjects from "@/components/sections/PersonalProjects.astro";
+import Skills from "@/components/sections/Skills.astro";
+import Projects from "@/components/sections/Projects.astro";
+import { useTranslations, languages } from "@/i18n/utils";
 
 export async function getStaticPaths() {
     return Object.keys(languages).map((lang) => ({ params: { lang } }));

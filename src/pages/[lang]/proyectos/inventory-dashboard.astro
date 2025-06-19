@@ -1,7 +1,7 @@
 ---
-import { personalProjects } from "../../../data/personalProjects";
-import { useTranslations } from "../../../i18n/utils.ts";
-import JesseButton from "../../../components/ui/buttons/JesseButton.astro";
+import { personalProjects } from "@/data/personalProjects";
+import { useTranslations } from "@/i18n/utils";
+import JesseButton from "@/components/ui/buttons/JesseButton.astro";
 
 export async function getStaticPaths() {
     return [{ params: { lang: "es" } }, { params: { lang: "en" } }];

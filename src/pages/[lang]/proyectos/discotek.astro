@@ -1,7 +1,7 @@
 ---
-import { personalProjects } from "../../../data/personalProjects";
-import { useTranslations } from "../../../i18n/utils.ts";
-import JesseButton from "../../../components/ui/buttons/JesseButton.astro";
+import { personalProjects } from "@/data/personalProjects";
+import { useTranslations } from "@/i18n/utils";
+import JesseButton from "@/components/ui/buttons/JesseButton.astro";
 
 export async function getStaticPaths() {
     return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
@@ -54,7 +54,7 @@ const screenshots = project?.details.screenshots ?? [];
             {
                 project ? (
                     <>
-                        <h1 class='text-4xl font-bold text-electric-blue mb-6'>
+                    <h1 class='text-4xl font-bold text-electric-blue mb-6'>
                             {project.name[currentLang]}
                         </h1>
                         <p class='mb-6 text-lg text-light-gray'>

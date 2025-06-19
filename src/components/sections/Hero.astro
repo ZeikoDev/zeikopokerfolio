@@ -1,5 +1,5 @@
 ---
-import { useTranslations } from "../../i18n/utils.ts";
+import { useTranslations, getLangFromUrl, languages } from "@/i18n/utils";
 
 const { lang } = Astro.params;
 const currentLang = (lang as "en" | "es") || "en";
@@ -10,6 +10,22 @@ const t = useTranslations(currentLang);
     id='hero'
     class='min-h-screen flex items-center justify-center relative overflow-hidden'
 >
+    <!-- Language Switch Button -->
+    <div class='absolute top-8 right-8 z-20'>
+        <button
+            id='language-switch'
+            class='language-switch-btn'
+            aria-label='Switch language'
+        >
+            <div class='switch-track'>
+                <div class='switch-thumb'>
+                    <span class='lang-text lang-en'>EN</span>
+                    <span class='lang-text lang-es'>ES</span>
+                </div>
+            </div>
+        </button>
+    </div>
+
     <!-- Background Elements -->
     <div
         class='absolute inset-0 bg-gradient-to-br from-slate-950 to-blue-900 opacity-95'
@@ -114,6 +130,147 @@ const t = useTranslations(currentLang);
         /* pointer-events: none; */
         transition: opacity 0.5s;
     }
+
+    /* Language Switch Button - Liquid Glass Style */
+    .language-switch-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        outline: none;
+        transition: transform 0.2s ease;
+    }
+
+    .language-switch-btn:hover {
+        transform: scale(1.05);
+    }
+
+    .language-switch-btn:active {
+        transform: scale(0.95);
+    }
+
+    .switch-track {
+        position: relative;
+        width: 80px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .switch-track::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.05) 50%,
+            rgba(255, 255, 255, 0.1) 100%
+        );
+        border-radius: 20px;
+        pointer-events: none;
+    }
+
+    .switch-thumb {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        border-radius: 18px;
+        box-shadow:
+            0 4px 16px rgba(59, 130, 246, 0.4),
+            0 2px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .switch-thumb::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.2) 0%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0.2) 100%
+        );
+        border-radius: 18px;
+        pointer-events: none;
+    }
+
+    .lang-text {
+        position: absolute;
+        font-size: 12px;
+        font-weight: 700;
+        color: white;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    .lang-text.lang-en {
+        left: 50%;
+        transform: translateX(-50%) scale(0.8);
+    }
+
+    .lang-text.lang-es {
+        right: 50%;
+        transform: translateX(50%) scale(0.8);
+    }
+
+    /* Active state for English */
+    .language-switch-btn[data-lang="en"] .switch-thumb {
+        left: 2px;
+    }
+
+    .language-switch-btn[data-lang="en"] .lang-text.lang-en {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+
+    /* Active state for Spanish */
+    .language-switch-btn[data-lang="es"] .switch-thumb {
+        left: 42px;
+    }
+
+    .language-switch-btn[data-lang="es"] .lang-text.lang-es {
+        opacity: 1;
+        transform: translateX(50%) scale(1);
+    }
+
+    /* Hover effects */
+    .language-switch-btn:hover .switch-track {
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow:
+            0 12px 40px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+
+    .language-switch-btn:hover .switch-thumb {
+        box-shadow:
+            0 6px 20px rgba(59, 130, 246, 0.5),
+            0 3px 12px rgba(0, 0, 0, 0.3);
+    }
 </style>
 
 <script>
@@ -141,4 +298,38 @@ const t = useTranslations(currentLang);
 
     // Update title every 4 seconds
     setInterval(updateTitle, 4000);
+
+    // Language Switch Functionality
+    document.addEventListener("DOMContentLoaded", () => {
+        const languageSwitch = document.getElementById(
+            "language-switch",
+        ) as HTMLButtonElement;
+        if (!languageSwitch) return;
+
+        // Get current language from URL
+        const currentLang = window.location.pathname.startsWith("/es")
+            ? "es"
+            : "en";
+
+        // Set initial state
+        languageSwitch.setAttribute("data-lang", currentLang);
+
+        // Handle language switch
+        languageSwitch.addEventListener("click", () => {
+            const currentLang = languageSwitch.getAttribute("data-lang");
+            const newLang = currentLang === "en" ? "es" : "en";
+
+            // Update button state
+            languageSwitch.setAttribute("data-lang", newLang);
+
+            // Navigate to new language
+            const currentPath = window.location.pathname;
+            const newPath = currentPath.replace(/^\/(en|es)/, `/${newLang}`);
+
+            // Add a small delay for the animation
+            setTimeout(() => {
+                window.location.href = newPath;
+            }, 150);
+        });
+    });
 </script>

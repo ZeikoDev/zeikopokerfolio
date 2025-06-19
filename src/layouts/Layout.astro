@@ -1,5 +1,5 @@
 ---
-import { useTranslations } from "../i18n/utils.ts";
+import { useTranslations } from "@/i18n/utils";
 
 interface Props {
 	title: string;
@@ -148,6 +148,18 @@ const t = useTranslations(lang as "en" | "es");
 <style is:global>
 	:root {
 		scroll-behavior: smooth;
+	}
+
+	/* Disable overscroll/bounce effect */
+	html,
+	body {
+		overscroll-behavior: none;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	/* Prevent horizontal overscroll */
+	html {
+		overflow-x: hidden;
 	}
 
 	/* Custom Scrollbar */

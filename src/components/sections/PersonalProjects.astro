@@ -1,7 +1,7 @@
 ---
-import { personalProjects } from "../../data/personalProjects";
-import JesseButton from "../ui/buttons/JesseButton.astro";
-import { useTranslations } from "../../i18n/utils";
+import { personalProjects } from "@/data/personalProjects";
+import JesseButton from "@/components/ui/buttons/JesseButton.astro";
+import { useTranslations } from "@/i18n/utils";
 
 const { lang } = Astro.params;
 const currentLang = (lang as "en" | "es") || "en";
@@ -107,6 +107,8 @@ const t = useTranslations(currentLang);
                     </div>
                 ))
             }
+        </div>
+    </div>
 </section>
 
 <script is:inline>

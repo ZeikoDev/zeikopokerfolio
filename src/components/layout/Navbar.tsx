@@ -1,6 +1,4 @@
-import { useTranslations } from "../../i18n/utils";
-import { getLangFromUrl } from "../../i18n/utils";
-import { languages } from "../../i18n/utils";
+import { useTranslations, getLangFromUrl, languages } from "@/i18n/utils";
 
 export default function Navbar() {
     const lang = getLangFromUrl(new URL(window.location.href));
