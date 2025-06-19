@@ -10,8 +10,8 @@ export interface PersonalProject {
     description: { en: string; es: string };
     technologies: string[];
     image: string;
-    details: ProjectDetails;
     externalUrl?: string;
+    details: ProjectDetails;
 }
 
 export const personalProjects: PersonalProject[] = [
@@ -19,7 +19,7 @@ export const personalProjects: PersonalProject[] = [
         slug: "inventory-dashboard",
         name: {
             en: "Zeiko Inventory Dashboard",
-            es: "Panel de Inventario Zeiko"
+            es: "Panel de Gestión de Inventario"
         },
         description: {
             en: "Modern dashboard for inventory, company, and user management with role-based access control.",
@@ -34,6 +34,7 @@ export const personalProjects: PersonalProject[] = [
             "Material UI",
         ],
         image: "/assets/projects/inventory-dashboard.png",
+        externalUrl: "https://github.com/zeikodev/zeiko-inventory-dashboard",
         details: {
             longDescription: {
                 en: "I developed a fullstack application for inventory and company management. It allows users (with admin or external roles) to manage products, inventories, companies, and users from an intuitive dashboard. Includes JWT authentication, permission control, entity editing and creation, and real-time data visualization.",
@@ -76,6 +77,7 @@ export const personalProjects: PersonalProject[] = [
             "expo-location",
         ],
         image: "/assets/projects/discotek.png",
+        externalUrl: "https://github.com/zeikodev/DK",
         details: {
             longDescription: {
                 en: "I built a mobile application that helps users discover and explore nightclubs in various locations. The app features real-time GPS location tracking, distance calculation, and comprehensive club information including pricing, capacity, and opening hours. Users can search and filter clubs based on various criteria, with automatic sorting by proximity to their current location.",
@@ -98,7 +100,6 @@ export const personalProjects: PersonalProject[] = [
                 ]
             },
             screenshots: [
-                "/assets/projects/discotek.png",
                 "/assets/projects/dk-1.png",
                 "/assets/projects/dk-2.png"
             ]
@@ -122,6 +123,7 @@ export const personalProjects: PersonalProject[] = [
             "NativeWind"
         ],
         image: "/assets/projects/easylife.png",
+        externalUrl: "https://github.com/zeikodev/easylife",
         details: {
             longDescription: {
                 en: "Easylife is a comprehensive service management platform that enables users to request, track, and manage various professional services. The app features real-time service tracking, scheduling capabilities, and a user-friendly interface for managing service requests. Users can browse available services, schedule appointments, track service providers in real-time, and rate their experiences.",
@@ -150,7 +152,6 @@ export const personalProjects: PersonalProject[] = [
                 ]
             },
             screenshots: [
-                "/assets/projects/easylife.png",
                 "/assets/projects/easylife-1.png",
                 "/assets/projects/easylife-2.png"
             ]
@@ -168,6 +169,7 @@ export const personalProjects: PersonalProject[] = [
         },
         technologies: ["Python", "Tkinter", "JSON", "datetime"],
         image: "/assets/projects/patient-managment.png",
+        externalUrl: "https://github.com/ZeikoDev/Manejo-de-pacientes",
         details: {
             longDescription: {
                 en: "A robust patient management system built with Python and Tkinter that enables healthcare providers to efficiently manage patient records. The application features a user-friendly interface for adding, editing, and searching patient information. It includes comprehensive medical history tracking, automated diagnosis based on symptoms, and secure local data storage using JSON format. The system is designed to streamline healthcare record management while maintaining data integrity and accessibility.",

@@ -2,7 +2,8 @@
 import { useTranslations } from "../../i18n/utils.ts";
 
 const { lang } = Astro.params;
-const t = useTranslations(lang as "en" | "es");
+const currentLang = (lang as "en" | "es") || "en";
+const t = useTranslations(currentLang);
 ---
 
 <section

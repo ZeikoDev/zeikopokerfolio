@@ -3,7 +3,8 @@ import JesseButton from "../ui/buttons/JesseButton.astro";
 import { useTranslations } from "../../i18n/utils.ts";
 
 const { lang } = Astro.params;
-const t = useTranslations(lang as "en" | "es");
+const currentLang = (lang as "en" | "es") || "en";
+const t = useTranslations(currentLang);
 
 const skills = [
     { name: "React", level: "Expert" },
@@ -237,18 +238,24 @@ const skills = [
         align-items: center;
         justify-content: center;
     }
-    .chip-years .main,
-    .chip-impact .main {
+    .chip-years .main {
         font-size: 1.4rem;
         font-weight: 900;
         line-height: 1.1;
-        display: inline-block;
-        min-width: 2.5em;
-        text-align: center;
     }
-    .chip-years .sub,
-    .chip-impact .sub {
+    .chip-years .sub {
         font-size: 0.7rem;
+        font-weight: 500;
+        margin-top: 0.1em;
+        line-height: 1.1;
+    }
+    .chip-impact .main {
+        font-size: 1.05rem;
+        font-weight: 900;
+        line-height: 1.1;
+    }
+    .chip-impact .sub {
+        font-size: 0.6rem;
         font-weight: 500;
         margin-top: 0.1em;
         line-height: 1.1;

@@ -117,7 +117,7 @@
             "royalFlush": {
                 "react": "Construyendo interfaces de usuario interactivas y responsivas con React",
                 "node": "Creando servicios backend escalables con Node.js",
-                "typescript": "Escribiendo código seguro y mantenible con TypeScript",
+                "typescript": "Escribiendo código seguro y robusto con TypeScript",
                 "postgres": "Diseñando sistemas de base de datos eficientes y confiables con PostgreSQL",
                 "reactNative": "Construyendo aplicaciones móviles multiplataforma con React Native"
             },
@@ -137,7 +137,6 @@
         },
         "projects": {
             "title": "Proyectos Destacados",
-            "description": "Una selección de mi trabajo más impactante",
             "techStack": "Stack",
             "impact": "Impacto",
             "complexity": "Complejidad"
@@ -146,8 +145,7 @@
             "title": "Proyectos Personales",
             "modal": {
                 "highlights": "Características Principales",
-                "screenshots": "Capturas de Pantalla",
-                "description": "Proyectos que he construido por diversión y aprendizaje"
+                "screenshots": "Capturas de Pantalla"
             },
             "common": {
                 "loading": "Cargando...",

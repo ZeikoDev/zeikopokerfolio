@@ -1,11 +1,11 @@
 ---
 import { personalProjects } from "../../data/personalProjects";
 import JesseButton from "../ui/buttons/JesseButton.astro";
-import ProjectModal from "../ui/modals/ProjectModal.astro";
 import { useTranslations } from "../../i18n/utils";
 
 const { lang } = Astro.params;
-const t = useTranslations(lang as "en" | "es");
+const currentLang = (lang as "en" | "es") || "en";
+const t = useTranslations(currentLang);
 ---
 
 <section id='personal-projects' class='py-section'>
@@ -31,15 +31,15 @@ const t = useTranslations(lang as "en" | "es");
                     >
                         <img
                             src={project.image}
-                            alt={project.name}
+                            alt={project.name[currentLang]}
                             class='w-[200px] h-[120px] object-cover mb-3 rounded-xl border border-blue-700/30'
                             style='width:200px;height:120px;object-fit:cover;'
                         />
                         <h3 class='text-xl font-bold text-off-white mb-2 text-center'>
-                            {project.name[lang]}
+                            {project.name[currentLang]}
                         </h3>
                         <p class='text-sm text-light-gray text-center mb-3 line-clamp-2'>
-                            {project.description[lang]}
+                            {project.description[currentLang]}
                         </p>
                         <div class='flex flex-wrap gap-1.5 mb-4 justify-center'>
                             {project.technologies.map((tech) => (
@@ -48,39 +48,12 @@ const t = useTranslations(lang as "en" | "es");
                                 </span>
                             ))}
                         </div>
-                        {project.externalUrl ? (
-                            <JesseButton
-                                href={project.externalUrl}
-                                target='_blank'
-                                rel='noopener noreferrer'
-                                variant='text'
-                                showText={true}
-                                size='small'
-                            >
-                                <span slot='icon'>
-                                    <svg
-                                        xmlns='http://www.w3.org/2000/svg'
-                                        fill='none'
-                                        viewBox='0 0 24 24'
-                                        stroke='currentColor'
-                                        class='w-4 h-4'
-                                    >
-                                        <path
-                                            stroke-linecap='round'
-                                            stroke-linejoin='round'
-                                            stroke-width='2'
-                                            d='M14 3h7m0 0v7m0-7L10 14'
-                                        />
-                                    </svg>
-                                </span>
-                                {t("common.viewProject")}
-                            </JesseButton>
-                        ) : project.slug ? (
+                        {project.slug ? (
                             <JesseButton
                                 href={
-                                    lang === "es"
+                                    currentLang === "es"
                                         ? `/es/proyectos/${project.slug}`
-                                        : `/projects/${project.slug}`
+                                        : `/en/proyectos/${project.slug}`
                                 }
                                 variant='text'
                                 showText={true}
@@ -134,9 +107,6 @@ const t = useTranslations(lang as "en" | "es");
                     </div>
                 ))
             }
-        </div>
-        <ProjectModal projects={personalProjects} />
-    </div>
 </section>
 
 <script is:inline>

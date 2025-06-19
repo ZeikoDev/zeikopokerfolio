@@ -4,7 +4,8 @@ import { projects } from "../../data/projects";
 import { useTranslations } from "../../i18n/utils.ts";
 
 const { lang } = Astro.params;
-const t = useTranslations(lang as 'en' | 'es');
+const currentLang = (lang as 'en' | 'es') || 'en';
+const t = useTranslations(currentLang);
 ---
 
 <section id="projects" class="py-section relative exclusive-section">
@@ -28,7 +29,7 @@ const t = useTranslations(lang as 'en' | 'es');
               <div class="aspect-video rounded-2xl overflow-hidden">
                 <img
                   src={project.image}
-                  alt={project.name}
+                  alt={project.name[currentLang]}
                   class="w-full h-full object-cover"
                 />
               </div>
@@ -40,8 +41,8 @@ const t = useTranslations(lang as 'en' | 'es');
 
             <!-- Project Details -->
             <div class="space-y-6 order-1 md:order-2">
-              <h3 class="text-3xl font-bold text-off-white">{project.name}</h3>
-              <p class="text-lg text-light-gray">{project.description}</p>
+              <h3 class="text-3xl font-bold text-off-white">{project.name[currentLang]}</h3>
+              <p class="text-lg text-light-gray">{project.description[currentLang]}</p>
 
               <!-- Technologies -->
               <div class="space-y-4">
@@ -86,7 +87,11 @@ const t = useTranslations(lang as 'en' | 'es');
                 </JesseButton>
               ) : (
                 <JesseButton
-                  href={`/projects/${project.slug}`}
+                  href={
+                    currentLang === "es"
+                      ? `/es/proyectos/${project.slug}`
+                      : `/projects/${project.slug}`
+                  }
                   variant="text"
                   size="large"
                   showText={true}

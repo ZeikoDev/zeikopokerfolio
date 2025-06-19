@@ -59,5 +59,6 @@ export type TranslationKey =
     | 'numbers.1kplus'
     | 'numbers.15kplus'
     | 'numbers.100plus'
+    | 'chip.15kplus'
     | 'common.contact'
     | 'common.moreDetails'; 
