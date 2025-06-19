@@ -1,0 +1,103 @@
+---
+import JesseButton from "./JesseButton.astro";
+import type { PersonalProject } from "../../data/personalProjects";
+const { project, index } = Astro.props;
+---
+
+<div
+    class='bg-slate-900/80 border-2 border-blue-700 rounded-2xl shadow-lg p-6 flex flex-col items-center poker-card relative'
+>
+    <img
+        src={project.image}
+        alt={project.name}
+        class='w-[200px] h-[120px] object-cover mb-4 rounded-xl border border-blue-700/30 bg-slate-800'
+        style='width:200px;height:120px;object-fit:cover;'
+    />
+    <h3 class='text-2xl font-bold text-off-white mb-2 text-center'>
+        {project.name}
+    </h3>
+    <p class='text-light-gray text-center mb-4'>
+        {project.description}
+    </p>
+    <div class='flex flex-wrap gap-2 mb-6 justify-center'>
+        {
+            project.technologies.map((tech: string) => (
+                <span class='px-3 py-1 bg-blue-900/80 text-electric-blue rounded-full text-xs border border-blue-700/40'>
+                    {tech}
+                </span>
+            ))
+        }
+    </div>
+    {
+        project.externalUrl ? (
+            <JesseButton
+                href={project.externalUrl}
+                target='_blank'
+                rel='noopener noreferrer'
+                variant='text'
+                showText={true}
+                size='large'
+            >
+                <span slot='icon'>
+                    <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        stroke='currentColor'
+                        class='w-5 h-5'
+                    >
+                        <path
+                            stroke-linecap='round'
+                            stroke-linejoin='round'
+                            stroke-width='2'
+                            d='M14 3h7m0 0v7m0-7L10 14'
+                        />
+                    </svg>
+                </span>
+                Ver Proyecto
+            </JesseButton>
+        ) : (
+            <JesseButton
+                variant='text'
+                showText={true}
+                size='large'
+                data-idx={index}
+                class='open-modal-btn'
+            >
+                <span slot='icon'>
+                    <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        stroke='currentColor'
+                        class='w-5 h-5'
+                    >
+                        <path
+                            stroke-linecap='round'
+                            stroke-linejoin='round'
+                            stroke-width='2'
+                            d='M15 12H9m6 0a6 6 0 11-12 0 6 6 0 0112 0z'
+                        />
+                    </svg>
+                </span>
+                More Details
+            </JesseButton>
+        )
+    }
+</div>
+
+<style>
+    .poker-card {
+        background: linear-gradient(135deg, #1e293b 60%, #334155 100%);
+        box-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.1);
+        border-radius: 1.5rem;
+        border: 2px solid #2563eb33;
+        transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+    }
+    .poker-card:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 12px 40px 0 rgba(59, 130, 246, 0.18);
+    }
+</style>

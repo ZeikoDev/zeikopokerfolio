@@ -1,0 +1,119 @@
+---
+import type { PersonalProject } from "../../data/personalProjects";
+
+interface Props {
+    projects: PersonalProject[];
+}
+
+const { projects } = Astro.props;
+---
+
+<div
+    id='project-modal'
+    class='hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50 fade-in-modal'
+>
+    <div
+        class='bg-slate-900 border-2 border-blue-700 rounded-2xl shadow-2xl p-8 max-w-lg w-full relative'
+        id='modal-content'
+    >
+        <button
+            class='absolute top-4 right-4 text-electric-blue text-2xl'
+            id='close-modal-btn'
+            aria-label='Cerrar'>&times;</button
+        >
+        <h3 class='text-2xl font-bold text-electric-blue mb-2' id='modal-title'>
+        </h3>
+        <p class='text-light-gray mb-4' id='modal-desc'></p>
+        <ul
+            class='list-disc list-inside text-off-white mb-4'
+            id='modal-highlights'
+        >
+        </ul>
+        <div class='flex gap-4 flex-wrap justify-center' id='modal-screenshots'>
+        </div>
+    </div>
+</div>
+
+<script define:vars={{ projects }}>
+    let modal = null;
+    let modalContent = null;
+    let closeModalBtn = null;
+    let highlightsList = null;
+    let screenshotsDiv = null;
+    let modalTitle = null;
+    let modalDesc = null;
+
+    function openModal(idx) {
+        const project = projects[idx];
+        if (!project || !project.details) return;
+        modal = document.getElementById("project-modal");
+        modalContent = document.getElementById("modal-content");
+        closeModalBtn = document.getElementById("close-modal-btn");
+        highlightsList = document.getElementById("modal-highlights");
+        screenshotsDiv = document.getElementById("modal-screenshots");
+        modalTitle = document.getElementById("modal-title");
+        modalDesc = document.getElementById("modal-desc");
+
+        modalTitle.textContent = project.name;
+        modalDesc.textContent = project.details.longDescription;
+        highlightsList.innerHTML = "";
+        project.details.highlights.forEach((item) => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            highlightsList.appendChild(li);
+        });
+        screenshotsDiv.innerHTML = "";
+        project.details.screenshots.forEach((src) => {
+            const img = document.createElement("img");
+            img.src = src;
+            img.alt = "Screenshot";
+            img.className =
+                "w-32 h-20 object-cover rounded border border-blue-700/30";
+            screenshotsDiv.appendChild(img);
+        });
+        modal.classList.remove("hidden");
+    }
+
+    function closeModal() {
+        modal = document.getElementById("project-modal");
+        modal.classList.add("hidden");
+    }
+
+    if (typeof window !== "undefined") {
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".open-modal-btn").forEach((btn) => {
+                btn.addEventListener("click", (e) => {
+                    const idx = btn.getAttribute("data-idx");
+                    openModal(idx);
+                });
+            });
+            document
+                .getElementById("close-modal-btn")
+                .addEventListener("click", closeModal);
+            document
+                .getElementById("project-modal")
+                .addEventListener("click", closeModal);
+            document
+                .getElementById("modal-content")
+                .addEventListener("click", (e) => e.stopPropagation());
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeModal();
+            });
+        });
+    }
+</script>
+
+<style>
+    .fade-in-modal {
+        animation: fadeInModal 0.3s ease;
+    }
+    @keyframes fadeInModal {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+
