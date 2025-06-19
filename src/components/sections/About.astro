@@ -1,5 +1,10 @@
 ---
-import JesseButton from "./ui/JesseButton.astro";
+import JesseButton from "@/components/ui/buttons/JesseButton.astro";
+import { useTranslations } from "@/i18n/utils";
+
+const { lang } = Astro.params;
+const currentLang = (lang as "en" | "es") || "en";
+const t = useTranslations(currentLang);
 
 const skills = [
     { name: "React", level: "Expert" },
@@ -24,17 +29,17 @@ const skills = [
                 <h2
                     class='text-4xl font-bold text-electric-blue text-center about-animate'
                 >
-                    About Me
+                    {t("about.title")}
                 </h2>
-                <p class='text-lg text-light-gray text-center about-animate'>
-                    I’m a passionate full stack developer who enjoys creating innovative software solutions in challenging environments, using technology as a tool to achieve goals and streamline processes.
-                </p>
-                <p class='text-lg text-light-gray text-center about-animate'>
-                    When I'm not coding, you can find me at the poker table,
-                    where I've learned valuable lessons about strategy, risk
-                    management, and decision-making that I apply to my
-                    development work.
-                </p>
+                {
+                    t("about.description")
+                        .split("\n")
+                        .map((line) => (
+                            <p class='text-lg text-light-gray text-center about-animate'>
+                                {line}
+                            </p>
+                        ))
+                }
 
                 <!-- Stat Poker Chips -->
                 <div class='flex gap-12 justify-center mt-8'>
@@ -44,12 +49,12 @@ const skills = [
                     >
                         <img
                             src='/poker-chip-blue.svg'
-                            alt='Years Poker Chip'
+                            alt={t("about.stats.years")}
                             class='w-full h-full'
                         />
                         <span class='chip-text chip-years'>
-                            <span class='main'>2+</span>
-                            <span class='sub'>Years</span>
+                            <span class='main'>{t("numbers.2plus")}</span>
+                            <span class='sub'>{t("about.stats.years")}</span>
                         </span>
                     </div>
                     <!-- Impact -->
@@ -58,12 +63,21 @@ const skills = [
                     >
                         <img
                             src='/poker-chip-blue.svg'
-                            alt='Projects Poker Chip'
+                            alt={t("about.stats.users")}
                             class='w-full h-full'
                         />
                         <span class='chip-text chip-impact'>
-                            <span class='main'>15K+</span>
-                            <span class='sub'>Users<br />impacted</span>
+                            <span class='main'>{t("chip.15kplus")}</span>
+                            {
+                                t("about.stats.users")
+                                    .split("\n")
+                                    .map((line) => (
+                                        <span class='sub'>
+                                            {line}
+                                            <br />
+                                        </span>
+                                    ))
+                            }
                         </span>
                     </div>
                     <!-- Passion -->
@@ -72,12 +86,12 @@ const skills = [
                     >
                         <img
                             src='/poker-chip-blue.svg'
-                            alt='Passion Poker Chip'
+                            alt={t("about.stats.passion")}
                             class='w-full h-full'
                         />
                         <span class='chip-text chip-passion'>
                             <span class='main'>&#8734;</span>
-                            <span class='sub'>Passion</span>
+                            <span class='sub'>{t("about.stats.passion")}</span>
                         </span>
                     </div>
                 </div>
@@ -105,6 +119,7 @@ const skills = [
                                     ></path>
                                 </svg>
                             </span>
+                            {t("common.viewCode")}
                         </JesseButton>
                     </a>
                     <a
@@ -129,6 +144,7 @@ const skills = [
                                     ></path>
                                 </svg>
                             </span>
+                            {t("common.viewProject")}
                         </JesseButton>
                     </a>
                     <a href='mailto:zeiko@zeiko.dev'>
@@ -149,6 +165,7 @@ const skills = [
                                     ></path>
                                 </svg>
                             </span>
+                            {t("common.contact")}
                         </JesseButton>
                     </a>
                 </div>
