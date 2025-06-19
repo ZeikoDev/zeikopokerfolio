@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <meta charset='UTF-8' />
+        <title>Redireccionando...</title>
+        <script>
+            const lang =
+                navigator.language &&
+                navigator.language.toLowerCase().startsWith("es")
+                    ? "es"
+                    : "en";
+            window.location.replace("/" + lang);
+        </script>
+    </head>
+    <body>
+        <p>Redireccionando...</p>
+    </body>
+</html>
