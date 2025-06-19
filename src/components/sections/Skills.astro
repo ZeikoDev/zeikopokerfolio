@@ -1,55 +1,58 @@
 ---
 import { Card } from "@heroui/react";
+import { useTranslations } from "../../i18n/utils.ts";
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as "en" | "es");
 
 const royalFlushSkills = [
   {
     value: "A",
     skill: "React",
-    description: "Modern web apps and component-driven UIs.",
+    description: t("skills.royalFlush.react"),
   },
   {
     value: "K",
     skill: "TypeScript",
-    description: "Type-safe, scalable JavaScript for robust apps.",
+    description: t("skills.royalFlush.typescript"),
   },
   {
     value: "Q",
     skill: "Node.js",
-    description: "Backend APIs, real-time services, and tooling.",
+    description: t("skills.royalFlush.node"),
   },
   {
     value: "J",
     skill: "PostgreSQL",
-    description: "Relational data modeling and advanced queries.",
+    description: t("skills.royalFlush.postgres"),
   },
   {
     value: "T",
     skill: "React Native",
-    description: "Cross-platform mobile apps with native feel.",
+    description: t("skills.royalFlush.reactNative"),
   },
 ];
 
 const otherSkills = [
   // Frontend
-  { name: "JavaScript/TypeScript", category: "Frontend" },
-  { name: "HTML & CSS", category: "Frontend" },
-  { name: "TailwindCSS", category: "Frontend" },
+  { name: "JavaScript/TypeScript", category: t("skills.categories.frontend") },
+  { name: "HTML & CSS", category: t("skills.categories.frontend") },
+  { name: "TailwindCSS", category: t("skills.categories.frontend") },
   // Backend
-  { name: "Python", category: "Backend" },
-  { name: "Django", category: "Backend" },
-  { name: "REST API", category: "Backend" },
+  { name: "Python", category: t("skills.categories.backend") },
+  { name: "Django", category: t("skills.categories.backend") },
+  { name: "REST API", category: t("skills.categories.backend") },
   // Database
-  { name: "MongoDB", category: "Database" },
+  { name: "MongoDB", category: t("skills.categories.database") },
   // Cloud/DevOps
-  { name: "AWS (EC2, S3)", category: "Cloud" },
-  { name: "Firebase/Firestore", category: "Cloud" },
+  { name: "AWS (EC2, S3)", category: t("skills.categories.cloud") },
+  { name: "Firebase/Firestore", category: t("skills.categories.cloud") },
   // Tools
-  { name: "Git/GitHub", category: "Tools" },
-  { name: "Testing (Jest)", category: "Tools" },
+  { name: "Git/GitHub", category: t("skills.categories.tools") },
+  { name: "Testing (Jest)", category: t("skills.categories.tools") },
   // Design
-  { name: "UX/UI Design", category: "Design" },
+  { name: "UX/UI", category: t("skills.categories.design") },
 ];
-
 ---
 
 <section
@@ -58,7 +61,7 @@ const otherSkills = [
 >
   <div class='max-w-content mx-auto px-4'>
     <h2 class='text-4xl font-bold text-electric-blue text-center mb-16'>
-      Royal Flush Tech Stack
+      {t("skills.title")}
     </h2>
     <div class='flex justify-center gap-6 flex-wrap mb-16 royal-flush-row'>
       {

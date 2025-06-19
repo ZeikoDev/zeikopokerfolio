@@ -1,8 +1,9 @@
 ---
 import { personalProjects } from "../../data/personalProjects";
-import JesseButton from "../../components/ui/JesseButton.astro";
+import JesseButton from "../../components/ui/buttons/JesseButton.astro";
+const lang = "en";
 const project = personalProjects.find((p) => p.slug === "inventory-dashboard");
-const highlights = project?.details.highlights ?? [];
+const highlights = project?.details.highlights[lang] ?? [];
 const technologies = project?.technologies ?? [];
 const screenshots = project?.details.screenshots ?? [];
 ---
@@ -12,13 +13,13 @@ const screenshots = project?.details.screenshots ?? [];
         <title>
             {
                 project
-                    ? `${project.name} | Project Details`
+                    ? `${project.name[lang]} | Project Details`
                     : "Project Not Found"
             }
         </title>
         <meta
             name='description'
-            content={project ? project.description : "Project not found"}
+            content={project ? project.description[lang] : "Project not found"}
         />
     </head>
     <body class='bg-slate-950 text-off-white min-h-screen'>
@@ -32,11 +33,11 @@ const screenshots = project?.details.screenshots ?? [];
                 project ? (
                     <>
                         <h1 class='text-4xl font-bold text-electric-blue mb-6'>
-                            {project.name}
+                            {project.name[lang]}
                         </h1>
 
                         <p class='mb-6 text-lg text-light-gray'>
-                            {project.details.longDescription}
+                            {project.details.longDescription[lang]}
                         </p>
 
                         <h2 class='text-2xl font-semibold mt-8 mb-2 text-off-white'>

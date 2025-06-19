@@ -1,7 +1,11 @@
 ---
-import { personalProjects } from "../data/personalProjects";
-import JesseButton from "./ui/JesseButton.astro";
-import ProjectModal from "./ui/ProjectModal.astro";
+import { personalProjects } from "../../data/personalProjects";
+import JesseButton from "../ui/buttons/JesseButton.astro";
+import ProjectModal from "../ui/modals/ProjectModal.astro";
+import { useTranslations } from "../../i18n/utils";
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as "en" | "es");
 ---
 
 <section id='personal-projects' class='py-section'>
@@ -10,8 +14,14 @@ import ProjectModal from "./ui/ProjectModal.astro";
             class='text-3xl font-bold text-electric-blue text-center mb-8 opacity-0 translate-y-8 transition-all duration-700 will-change-transform'
             data-animate-on-scroll
         >
-            Personal Projects
+            {t("personal.title")}
         </h2>
+        <p
+            class='text-lg text-light-gray text-center mb-12 opacity-0 translate-y-8 transition-all duration-700 will-change-transform'
+            data-animate-on-scroll
+        >
+            {t("personal.description")}
+        </p>
         <div class='grid md:grid-cols-2 gap-6'>
             {
                 personalProjects.map((project, idx) => (
@@ -26,10 +36,10 @@ import ProjectModal from "./ui/ProjectModal.astro";
                             style='width:200px;height:120px;object-fit:cover;'
                         />
                         <h3 class='text-xl font-bold text-off-white mb-2 text-center'>
-                            {project.name}
+                            {project.name[lang]}
                         </h3>
                         <p class='text-sm text-light-gray text-center mb-3 line-clamp-2'>
-                            {project.description}
+                            {project.description[lang]}
                         </p>
                         <div class='flex flex-wrap gap-1.5 mb-4 justify-center'>
                             {project.technologies.map((tech) => (
@@ -63,11 +73,15 @@ import ProjectModal from "./ui/ProjectModal.astro";
                                         />
                                     </svg>
                                 </span>
-                                Ver Proyecto
+                                {t("common.viewProject")}
                             </JesseButton>
                         ) : project.slug ? (
                             <JesseButton
-                                href={`/projects/${project.slug}`}
+                                href={
+                                    lang === "es"
+                                        ? `/es/proyectos/${project.slug}`
+                                        : `/projects/${project.slug}`
+                                }
                                 variant='text'
                                 showText={true}
                                 size='small'
@@ -88,7 +102,7 @@ import ProjectModal from "./ui/ProjectModal.astro";
                                         />
                                     </svg>
                                 </span>
-                                More Details
+                                {t("common.moreDetails")}
                             </JesseButton>
                         ) : (
                             <JesseButton
@@ -114,7 +128,7 @@ import ProjectModal from "./ui/ProjectModal.astro";
                                         />
                                     </svg>
                                 </span>
-                                More Details
+                                {t("common.moreDetails")}
                             </JesseButton>
                         )}
                     </div>
