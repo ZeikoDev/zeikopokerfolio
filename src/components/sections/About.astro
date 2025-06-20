@@ -313,4 +313,23 @@ const skills = [
             }
         });
     }
+    document.addEventListener("DOMContentLoaded", () => {
+        const emailButton = document.querySelector(
+            'a[href^="mailto:"]',
+        ) as HTMLAnchorElement;
+        if (emailButton) {
+            emailButton.addEventListener("click", (e) => {
+                setTimeout(() => {
+                    emailButton.blur();
+                    const btnElement = emailButton.querySelector(
+                        ".jesse-btn",
+                    ) as HTMLElement;
+                    if (btnElement) {
+                        btnElement.style.transform = "";
+                        btnElement.style.boxShadow = "";
+                    }
+                }, 100);
+            });
+        }
+    });
 </script>
