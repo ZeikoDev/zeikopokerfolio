@@ -1,36 +1,43 @@
 ---
 import { Card } from "@heroui/react";
 import { useTranslations } from "@/i18n/utils";
+import type { TranslationKey } from "@/i18n/types";
 
 const { lang } = Astro.params;
 const currentLang = (lang as "en" | "es") || "en";
 const t = useTranslations(currentLang);
 
-const royalFlushSkills = [
+interface SkillCard {
+  value: string;
+  skill: string;
+  description: TranslationKey;
+}
+
+const royalFlushSkills: SkillCard[] = [
   {
     value: "A",
     skill: "React",
-    description: t("skills.royalFlush.react"),
+    description: "skills.royalFlush.react",
   },
   {
     value: "K",
-    skill: "TypeScript",
-    description: t("skills.royalFlush.typescript"),
+    skill: "Node.js",
+    description: "skills.royalFlush.node",
   },
   {
     value: "Q",
-    skill: "Node.js",
-    description: t("skills.royalFlush.node"),
+    skill: "TypeScript",
+    description: "skills.royalFlush.typescript",
   },
   {
     value: "J",
     skill: "PostgreSQL",
-    description: t("skills.royalFlush.postgres"),
+    description: "skills.royalFlush.postgres",
   },
   {
     value: "T",
     skill: "React Native",
-    description: t("skills.royalFlush.reactNative"),
+    description: "skills.royalFlush.reactNative",
   },
 ];
 
@@ -68,28 +75,28 @@ const otherSkills = [
       {
         royalFlushSkills.map((card, idx) => (
           <div
-            class={`relative bg-slate-900/80 border-2 border-blue-700 rounded-xl w-40 h-64 flex flex-col justify-between shadow-lg poker-card flop-card-animate`}
+            class='relative bg-slate-900/80 border-2 border-blue-700 rounded-xl w-40 h-64 flex flex-col justify-between px-3 pt-[0.6rem] pb-[0.75rem] shadow-lg poker-card flop-card-animate'
             style={`animation-delay: ${idx * 0.25}s;`}
           >
-            <div class='flex justify-between items-center px-4 pt-3'>
-              <span class='text-2xl font-bold text-electric-blue'>
+            <div class='flex justify-between items-start'>
+              <span class='text-xl font-bold text-electric-blue'>
                 {card.value}
               </span>
-              <span class='text-2xl text-electric-blue'>♦</span>
+              <span class='text-xl text-electric-blue'>♦</span>
             </div>
-            <div class='flex-1 flex flex-col items-center justify-center px-4'>
-              <span class='royal-flush-title text-off-white mb-2 text-center'>
+            <div class='text-center'>
+              <h3 class='text-xl font-bold text-off-white mb-2 text-center'>
                 {card.skill}
-              </span>
-              <span class='text-sm text-light-gray text-center'>
-                {card.description}
-              </span>
+              </h3>
+              <p class='text-sm text-light-gray text-center'>
+                {t(card.description)}
+              </p>
             </div>
-            <div class='flex justify-between items-center px-4 pb-3 rotate-180'>
-              <span class='text-2xl font-bold text-electric-blue'>
+            <div class='flex justify-between items-end rotate-180'>
+              <span class='text-xl font-bold text-electric-blue'>
                 {card.value}
               </span>
-              <span class='text-2xl text-electric-blue'>♦</span>
+              <span class='text-xl text-electric-blue'>♦</span>
             </div>
           </div>
         ))
