@@ -66,7 +66,9 @@
             "viewCode": "View Code",
             "close": "Close",
             "contact": "Contact",
-            "moreDetails": "More Details"
+            "moreDetails": "More Details",
+            "emailModalTitle": "Client email not available",
+            "emailModalDescription": "Copy the following email to contact me:"
         },
         "pokerHands": {
             "royalFlush": "Royal Flush",
@@ -146,15 +148,6 @@
             "modal": {
                 "highlights": "Características Principales",
                 "screenshots": "Capturas de Pantalla"
-            },
-            "common": {
-                "loading": "Cargando...",
-                "error": "Ocurrió un error",
-                "success": "¡Éxito!",
-                "viewProject": "Ver Proyecto",
-                "viewCode": "Ver Código",
-                "close": "Cerrar",
-                "contact": "Contacto"
             }
         },
         "pokerHands": {
@@ -180,11 +173,16 @@
             "15kplus": "+15k"
         },
         "common": {
+            "loading": "Cargando...",
+            "error": "Ocurrió un error",
+            "success": "¡Éxito!",
             "viewProject": "Ver Proyecto",
             "viewCode": "Ver Código",
             "close": "Cerrar",
             "contact": "Contacto",
-            "moreDetails": "Más Detalles"
+            "moreDetails": "Más Detalles",
+            "emailModalTitle": "Cliente de correo no disponible",
+            "emailModalDescription": "Copia el siguiente email para contactarme:"
         }
     }
 }

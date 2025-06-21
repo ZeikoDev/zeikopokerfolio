@@ -6,6 +6,7 @@ const {
     href,
     target,
     rel,
+    class: className,
 } = Astro.props;
 ---
 
@@ -15,7 +16,7 @@ const {
             href={href}
             target={target}
             rel={rel}
-            class={`jesse-btn ${variant} ${size}`}
+            class:list={[`jesse-btn ${variant} ${size}`, className]}
             tabindex='0'
         >
             <slot name='icon' />
@@ -26,7 +27,10 @@ const {
             ) : null}
         </a>
     ) : (
-        <button class={`jesse-btn ${variant} ${size}`} type='button'>
+        <button
+            class:list={[`jesse-btn ${variant} ${size}`, className]}
+            type='button'
+        >
             <slot name='icon' />
             {showText ? (
                 <span class='jesse-btn-text'>
