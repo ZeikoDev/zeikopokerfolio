@@ -1,6 +1,8 @@
 ---
 import JesseButton from "@/components/ui/buttons/JesseButton.astro";
+import EmailModal from "@/components/ui/EmailModal.astro";
 import { useTranslations } from "@/i18n/utils";
+import { SITE } from "@/data/site";
 
 const { lang } = Astro.params;
 const currentLang = (lang as "en" | "es") || "en";
@@ -16,6 +18,8 @@ const skills = [
     { name: "AWS", level: "Intermediate" },
     { name: "GraphQL", level: "Advanced" },
 ];
+
+const email = "zeiko@zeiko.dev";
 ---
 
 <section
@@ -147,7 +151,11 @@ const skills = [
                             {t("common.viewProject")}
                         </JesseButton>
                     </a>
-                    <a href='mailto:zeiko@zeiko.dev'>
+                    <a
+                        href={`mailto:${SITE.email}`}
+                        id='email-link'
+                        data-email={SITE.email}
+                    >
                         <JesseButton>
                             <span slot='icon'>
                                 <svg
@@ -173,6 +181,13 @@ const skills = [
         </div>
     </div>
 </section>
+
+<EmailModal
+    email={SITE.email}
+    title={t("common.emailModalTitle")}
+    description={t("common.emailModalDescription")}
+    closeText={t("common.close")}
+/>
 
 <style>
     .py-section {
@@ -274,6 +289,13 @@ const skills = [
 </style>
 
 <script>
+    // Declarar tipos globales para evitar errores
+    declare global {
+        interface Window {
+            showEmailModal: (email: string) => void;
+        }
+    }
+
     if (typeof window !== "undefined") {
         window.addEventListener("DOMContentLoaded", () => {
             const aboutSection =
@@ -313,12 +335,83 @@ const skills = [
             }
         });
     }
+
     document.addEventListener("DOMContentLoaded", () => {
         const emailButton = document.querySelector(
-            'a[href^="mailto:"]',
+            "#email-link",
         ) as HTMLAnchorElement;
+
         if (emailButton) {
             emailButton.addEventListener("click", (e) => {
+                const email =
+                    emailButton.getAttribute("data-email") || "zeiko@zeiko.dev";
+
+                // Check if we're in a mobile app or iframe that might block mailto
+                const isInRestrictedContext = () => {
+                    return (
+                        window.self !== window.top || // In iframe
+                        navigator.userAgent.includes("Instagram") ||
+                        navigator.userAgent.includes("Facebook") ||
+                        navigator.userAgent.includes("Twitter") ||
+                        navigator.userAgent.includes("LinkedIn") ||
+                        navigator.userAgent.includes("WhatsApp") ||
+                        navigator.userAgent.includes("Telegram")
+                    );
+                };
+
+                // If we're in a restricted context, show modal immediately
+                if (isInRestrictedContext()) {
+                    e.preventDefault();
+                    if (window.showEmailModal) {
+                        window.showEmailModal(email);
+                    }
+                    return;
+                }
+
+                // For regular browsers, try mailto first
+                let mailtoTimeout: number | undefined;
+                let modalShown = false;
+
+                // Track if the page loses focus (indicates mailto worked)
+                let pageLostFocus = false;
+                const onBlur = () => {
+                    pageLostFocus = true;
+                    if (mailtoTimeout) {
+                        clearTimeout(mailtoTimeout);
+                    }
+                };
+
+                const onFocus = () => {
+                    // If page regained focus and we had a timeout, mailto probably worked
+                    if (pageLostFocus && mailtoTimeout) {
+                        clearTimeout(mailtoTimeout);
+                    }
+                };
+
+                // Add event listeners
+                window.addEventListener("blur", onBlur);
+                window.addEventListener("focus", onFocus);
+
+                // Try to open mailto
+                const mailtoLink = `mailto:${email}`;
+                window.location.href = mailtoLink;
+
+                // Set a timeout as fallback
+                mailtoTimeout = window.setTimeout(() => {
+                    // Only show modal if page didn't lose focus (mailto didn't work)
+                    if (!pageLostFocus && !modalShown) {
+                        modalShown = true;
+                        if (window.showEmailModal) {
+                            window.showEmailModal(email);
+                        }
+                    }
+
+                    // Clean up event listeners
+                    window.removeEventListener("blur", onBlur);
+                    window.removeEventListener("focus", onFocus);
+                }, 2000);
+
+                // Clean up button styles
                 setTimeout(() => {
                     emailButton.blur();
                     const btnElement = emailButton.querySelector(
