@@ -8,12 +8,12 @@
             "personal": "Personal Projects"
         },
         "hero": {
-            "subtitle": "Jr. Full-Stack Developer",
+            "subtitle": "Full-Stack Developer",
             "description": "Always raising the stakes in web development."
         },
         "about": {
             "title": "About Me",
-            "description": "I'm a passionate full-stack developer who enjoys creating innovative software solutions in challenging environments, using technology as a tool to achieve goals and streamline processes.\nWhen I'm not coding, you can find me at the poker table, where I've learned valuable lessons about strategy, risk management, and decision-making that I apply to my development work.",
+            "description": "I'm a passionate full-stack developer who enjoys creating innovative software solutions in challenging environments, using technology as a tool to achieve goals and streamline processes.\nWhen I'm not coding, you can find me on the mats training Brazilian Jiu-Jitsu, where I've learned valuable lessons about strategy, problem-solving, and perseverance that I apply to my development work.",
             "stats": {
                 "years": "Years",
                 "users": "Users\nImpacted",
@@ -102,12 +102,11 @@
             "personal": "Proyectos Personales"
         },
         "hero": {
-            "subtitle": "Desarrollador Full Stack junior",
             "description": "Siempre elevando las apuestas en el desarrollo web"
         },
         "about": {
             "title": "Sobre Mí",
-            "description": "Soy un desarrollador full-stack apasionado que disfruta creando soluciones de software innovadoras en entornos desafiantes, usando la tecnología como herramienta para alcanzar objetivos y optimizar procesos.\nCuando no estoy programando, puedes encontrarme en la mesa de póker, donde he aprendido valiosas lecciones sobre estrategia, gestión de riesgos y toma de decisiones que aplico a mi trabajo como desarrollador.",
+            "description": "Soy un desarrollador full-stack apasionado que disfruta creando soluciones de software innovadoras en entornos desafiantes, usando la tecnología como herramienta para alcanzar objetivos y optimizar procesos.\nCuando no estoy programando, me puedes encontrar en el tatami entrenando Jiu-Jitsu Brasileño,  donde he aprendido valiosas lecciones sobre estrategia, resolución de problemas y perseverancia que aplico en mi trabajo como desarrollador.",
             "stats": {
                 "years": "Años",
                 "users": "Usuarios\nFelices",

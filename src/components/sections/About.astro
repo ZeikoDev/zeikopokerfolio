@@ -19,7 +19,7 @@ const skills = [
     { name: "GraphQL", level: "Advanced" },
 ];
 
-const email = "zeiko@zeiko.dev";
+const email = "me@zeiko.dev";
 ---
 
 <section
@@ -344,7 +344,7 @@ const email = "zeiko@zeiko.dev";
         if (emailButton) {
             emailButton.addEventListener("click", (e) => {
                 const email =
-                    emailButton.getAttribute("data-email") || "zeiko@zeiko.dev";
+                    emailButton.getAttribute("data-email") || "me@zeiko.dev";
 
                 // Check if we're in a mobile app or iframe that might block mailto
                 const isInRestrictedContext = () => {
