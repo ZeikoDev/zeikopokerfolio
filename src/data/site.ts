@@ -1,3 +1,3 @@
 export const SITE = {
-    email: "zeiko@zeiko.dev",
+    email: "me@zeiko.dev",
 }; 
